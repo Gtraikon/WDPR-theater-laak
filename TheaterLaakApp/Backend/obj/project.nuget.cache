@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "m2ptzIKrYP8JTpQuDwv1nXGTk67RTvRimfRULjxi5zYgPWGa0YpM1ALzYx5TKD1Q5r+u+BQMasAtJDibCdZPmw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ttson\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
