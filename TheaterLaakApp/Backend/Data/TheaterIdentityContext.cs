@@ -9,6 +9,7 @@ public class PretparkIdentityContext : IdentityDbContext<Gebruiker>
 {
     public PretparkIdentityContext(DbContextOptions<PretparkIdentityContext> options)
         : base(options)
+        //jhv
     {
     }
 
