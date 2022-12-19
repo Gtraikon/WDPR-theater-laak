@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj": {}
+    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj": {
+    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,9 +43,27 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "microsoft.entityframeworkcore": {
+              "target": "Package",
+              "version": "[7.0.1, )"
             }
           },
           "imports": [
