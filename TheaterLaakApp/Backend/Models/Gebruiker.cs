@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace week_6.Models
-{
+namespace Backend.Models;
+
     public class Gebruiker : IdentityUser
     {
-        public string? Naam { get; set; }   
-        public string? Email { get; set; }   
         public string? Password { get; init; }
     }
-}
