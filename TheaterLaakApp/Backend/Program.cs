@@ -52,6 +52,17 @@ builder.Services.AddSwaggerGen(c => c.AddSecurityDefinition("Bearer", new OpenAp
     Description = "JWT Authorization header using the Bearer scheme."
 }));
 
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("CorsPolicy", builder =>
+        {
+            builder
+                .AllowAnyOrigin() // Allow any origin
+                .AllowAnyMethod() // Allow any method
+                .AllowAnyHeader(); // Allow any header
+        });
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,7 +71,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();;
 

@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Backend.Data;
 using Backend.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Backend.Controllers
 {
@@ -26,6 +27,7 @@ namespace Backend.Controllers
     public string? Password { get; init; }
 }
 
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -77,10 +79,10 @@ namespace Backend.Controllers
                         expires: DateTime.Now.AddMinutes(10),
                         signingCredentials: signingCredentials
                     );
-                    return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
+                    return Ok(new {success = true, token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
                 }
 
-            return Unauthorized();
+            return Unauthorized(new { success = false, error = "Invalid email or password" });
         }
         // GET: api/Account
         [Authorize]
