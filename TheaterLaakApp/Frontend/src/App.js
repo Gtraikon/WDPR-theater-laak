@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar';
 import HomePage from './Pages/HomePage';
 
 import Footer from './Components/Footer';
+import ReserverenPage from './Pages/ReserverenPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar/>  
           <Routes>
             <Route exact path="/" element={<HomePage />} ></Route>
+            <Route exact path="/reserveren" element={<ReserverenPage />} ></Route>
           </Routes>
           <Footer/>
     </BrowserRouter>
@@ -21,3 +23,4 @@ function App() {
 }
 
 export default App;
+
