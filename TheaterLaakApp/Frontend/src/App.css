@@ -13,8 +13,10 @@ header {
   padding: 20px;
 }
 
-header h1 {
+header h1 a{
   margin: 0;
+  text-decoration: none;
+  color: #fff;
 }
 
 header nav ul {
@@ -46,4 +48,9 @@ footer {
   color: #fff;
   padding: 20px;
   text-align: center;
+}
+
+form {
+  padding: 20px;
+  padding-bottom: 10px;
 }

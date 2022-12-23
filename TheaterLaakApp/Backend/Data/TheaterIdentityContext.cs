@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
 
-namespace week_6.Data;
+namespace Backend.Data;
 
-public class PretparkIdentityContext : IdentityDbContext<Gebruiker>
+public class TheaterIdentityContext : IdentityDbContext<Gebruiker>
 {
-    public PretparkIdentityContext(DbContextOptions<PretparkIdentityContext> options)
+    public TheaterIdentityContext(DbContextOptions<TheaterIdentityContext> options)
         : base(options)
     {
     }
