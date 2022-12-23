@@ -4564,11 +4564,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+      "projectPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPRGIT\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
+      "outputPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

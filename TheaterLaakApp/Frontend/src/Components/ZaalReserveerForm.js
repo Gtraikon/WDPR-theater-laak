@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 const ZaalHurenFormulier = () => {
   const [formData, setFormData] = useState({
     datum: '',
-    tijd: '',
-    duur: '',
-    grootte: '',
+    begintijd: '',
+    eindtijd: '',
+    zaal: '',
   });
 
   const handleChange = (event) => {
@@ -33,36 +33,40 @@ const ZaalHurenFormulier = () => {
         className="form-input"
       />
       <br />
-      <label htmlFor="tijd" className="form-label">Tijd:</label>
+
+      <label htmlFor="begintijd" className="form-label">Begintijd:</label>
       <input
         type="time"
-        name="tijd"
-        id="tijd"
-        value={formData.tijd}
+        name="begintijd"
+        id="begintijd"
+        value={formData.begintijd}
         onChange={handleChange}
         className="form-input"
       />
       <br />
-      <label htmlFor="duur" className="form-label">Duur (in uren):</label>
+
+      <label htmlFor="eindtijd" className="form-label">Eindtijd:</label>
       <input
-        type="number"
-        name="duur"
-        id="duur"
-        value={formData.duur}
+        type="time"
+        name="eindtijd"
+        id="eindtijd"
+        value={formData.eindtijd}
         onChange={handleChange}
         className="form-input"
       />
       <br />
-      <label htmlFor="grootte" className="form-label">Welke zaal wil je huren:</label>
+
+      <label htmlFor="zaal" className="form-label">Welke zaal wil je huren:</label>
       <input
         type="number"
-        name="grootte"
-        id="grootte"
+        name="zaal"
+        id="zaal"
         value={formData.grootte}
         onChange={handleChange}
         className="form-input"
       />
       <br />
+
       <button type="submit" className="form-button">Zaal huren</button>
     </form>
   );

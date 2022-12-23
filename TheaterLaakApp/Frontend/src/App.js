@@ -8,15 +8,19 @@ import HomePage from './Pages/HomePage';
 
 import Footer from './Components/Footer';
 import ReserverenPage from './Pages/ReserverenPage';
+import LoginPage from './Pages/LoginPage';
 
 function App() {
   return (
     <BrowserRouter>
         <Navbar/>  
+        <div className='body'>
           <Routes>
             <Route exact path="/" element={<HomePage />} ></Route>
             <Route exact path="/reserveren" element={<ReserverenPage />} ></Route>
+            <Route exact path="/inloggen" element={<LoginPage />} ></Route>
           </Routes>
+          </div>
           <Footer/>
     </BrowserRouter>
   );

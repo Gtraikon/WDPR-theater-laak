@@ -12,6 +12,7 @@ export default function Navbar() {
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Zaalverhuur</a></li>
                     <li><a href="#">Donateurs</a></li>
+                    <li><a href="/inloggen">Inloggen</a></li>
                 </ul>
             </nav>
         </header>
