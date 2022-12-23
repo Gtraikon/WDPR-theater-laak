@@ -82,7 +82,7 @@ namespace Backend.Controllers
                     return Ok(new {success = true, token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });
                 }
 
-            return Unauthorized(new { success = false, error = "Invalid email or password" });
+            return Unauthorized(new { success = false, error = "U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd" });
         }
         // GET: api/Account
         [Authorize]
@@ -92,12 +92,13 @@ namespace Backend.Controllers
             return await _context.Gebruiker.ToListAsync();
         }
 
-        // GET: api/Account/5
-        [Authorize(Roles = "Medewerker")]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Gebruiker>> GetGebruiker(string id)
+        // GET: api/Account/test1
+        //[Authorize(Roles = "Medewerker")]
+        //[Authorize]
+        [HttpGet("{username}")]
+        public async Task<ActionResult<Gebruiker>> GetGebruiker(string username)
         {
-            var gebruiker = await _context.Gebruiker.FindAsync(id);
+            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(g => g.UserName == username);
 
             if (gebruiker == null)
             {

@@ -35,7 +35,7 @@ function LoginPage() {
       }
     } catch (error) {
       console.error(error);
-      setError('An error occurred while logging in');
+      setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
     }
   }
 
@@ -53,7 +53,6 @@ function LoginPage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p className="error">{error}</p>}
       <label>
         Username:
         <input type="username" value={username} onChange={handleEmailChange} />
@@ -65,6 +64,7 @@ function LoginPage() {
       </label>
       <br />
       <button type="submit">Log In</button>
+      {error && <p className="error" style={{color: "red"}}>{error}</p>}
     </form>
   );
 }
