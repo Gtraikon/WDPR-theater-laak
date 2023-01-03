@@ -22,4 +22,8 @@ public class TheaterIdentityContext : IdentityDbContext<Gebruiker>
 
     public DbSet<Backend.Models.Gebruiker> Gebruiker { get; set; }
     public DbSet<Backend.Models.Bezoeker> Gast { get; set; }
+
+    public DbSet<Backend.Models.Kaartje> Kaart {get; set;}
+
+     public DbSet<Backend.Models.Voorstelling> Voorstelling {get; set;}
 }
