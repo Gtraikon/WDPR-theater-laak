@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    partial class TheaterIdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230103163037_3")]
+    partial class _3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
@@ -98,16 +101,15 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("GebruikerID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Prijs")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("VoorstellingID")
+                    b.Property<int>("voorstellingID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("voorstellingID");
 
                     b.ToTable("Kaart");
                 });
@@ -260,6 +262,17 @@ namespace Backend.Migrations
                     b.HasBaseType("Backend.Models.Gebruiker");
 
                     b.HasDiscriminator().HasValue("Bezoeker");
+                });
+
+            modelBuilder.Entity("Backend.Models.Kaartje", b =>
+                {
+                    b.HasOne("Backend.Models.Voorstelling", "voorstelling")
+                        .WithMany()
+                        .HasForeignKey("voorstellingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("voorstelling");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
