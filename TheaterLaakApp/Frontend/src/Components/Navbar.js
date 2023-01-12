@@ -2,18 +2,23 @@ export default function Navbar() {
     return (
         <header>
             <nav>
-                <ul>
-                    <img src="/afbeeldingen/Logo.png" alt="Laak theater"/>
-                    <li><a href="#">Programma</a></li>
-                    <li><a href="#">Voorstellingen</a></li>
-                    <li><a href="#">Tickets</a></li>
-                    <li><a href="#">Over ons</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Zaalverhuur</a></li>
-                    <li><a href="#">Donateurs</a></li>
-                    <li><a href="/inloggen">Inloggen</a></li>
-                </ul>
+                
+                    <img src="/afbeeldingen/Logo.png" alt="Laak theater" href="http://localhost:3000"/>
+
+                <a href="#">Programma</a>
+                <a href="#">Tickets</a>  
+                <a href="/">Home</a>
+                <a href="/zalen">Zaalverhuur</a>
+                <a href="#">Donateurs</a>
+                <div class="dropdown">
+                        <button class="dropbtn">More</button>
+                        <div class="dropdown-content">
+                            <a href="#">Over ons</a>
+                            <a href="/contact">Contact</a>
+                            <a href="#">Voorstellingen</a>
+                        </div>
+                        </div>
+                
             </nav>
         </header>
     )

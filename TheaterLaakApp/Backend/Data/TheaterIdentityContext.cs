@@ -20,10 +20,10 @@ public class TheaterIdentityContext : IdentityDbContext<Gebruiker>
             //.WithMany(p => p.Gebruikers);
     }
 
-    public DbSet<Backend.Models.Gebruiker> Gebruiker { get; set; }
-    public DbSet<Backend.Models.Bezoeker> Gast { get; set; }
+    public DbSet<Backend.Models.Gebruiker> Gebruikers { get; set; }
+    public DbSet<Backend.Models.Bezoeker> Bezoekers { get; set; }
 
-    public DbSet<Backend.Models.Kaartje> Kaart {get; set;}
+    public DbSet<Backend.Models.Kaartje> Kaartjes {get; set;}
 
-     public DbSet<Backend.Models.Voorstelling> Voorstelling {get; set;}
+     public DbSet<Backend.Models.Voorstelling> Voorstellingen {get; set;}
 }

@@ -10,6 +10,7 @@ import TicketPage from './Pages/TicketPage';
 import Footer from './Components/Footer';
 import ReserverenPage from './Pages/ReserverenPage';
 import LoginPage from './Pages/LoginPage';
+import Calender from './Pages/VoorstellingPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/reserveren" element={<ReserverenPage />} ></Route>
           <Route exact path="/inloggen" element={<LoginPage />} ></Route>
           <Route exact path="/kopen" element={<TicketPage />} ></Route>
+          <Route exact path="/Voorstellingweergave" element={<Calender />} ></Route>
         </Routes>
       </div>
       <Footer />
