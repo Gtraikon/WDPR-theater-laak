@@ -7,7 +7,7 @@ import Navbar from './Components/Navbar';
 import HomePage from './Pages/HomePage';
 
 import Footer from './Components/Footer';
-import ReserverenPage from './Pages/ReserverenPage';
+import ReserverenPage from './Pages/ZalenPage';
 import LoginPage from './Pages/LoginPage';
 
 const setAuthToken = token => {
