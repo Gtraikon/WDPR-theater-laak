@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -10,7 +10,20 @@ import Footer from './Components/Footer';
 import ReserverenPage from './Pages/ReserverenPage';
 import LoginPage from './Pages/LoginPage';
 
+const setAuthToken = token => {
+  if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+  else
+      delete axios.defaults.headers.common["Authorization"];
+}
+
 function App() {
+  const token = localStorage.getItem("token");
+  if (token) {
+      setAuthToken(token);
+  }
+
   return (
     <BrowserRouter>
         <Navbar/>  
