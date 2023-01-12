@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 const ZaalHurenFormulier = () => {
+  const username = localStorage.getItem("username");
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     datum: '',
     begintijd: '',
@@ -16,9 +19,30 @@ const ZaalHurenFormulier = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    // Voer hier de code uit om de zaal te huren met de ingevulde gegevens
+
+    try {
+      const response = await axios.post('https://localhost:7020/api/reservering', {
+        Gebruikersnaam: username,
+        Zaalnummer: formData.zaal,
+        Jaar: formData.datum.split("-")[0],
+        Maand: formData.datum.split("-")[1],
+        Dag: formData.datum.split("-")[2],
+        BeginUur: formData.begintijd.split(":")[0],
+        BeginMinuut: formData.begintijd.split(":")[1],
+        EindUur: formData.eindtijd.split(":")[0],
+        EindMinuut: formData.eindtijd.split(":")[1]
+      });
+      /*if (response.data.success = true) {
+        navigate("/");
+      } else {
+        setError(response.data.error);
+      }*/
+    } catch (error) {
+      console.error(error);
+      setError("Het reserveren is niet gelukt");
+    }
   };
 
   return (

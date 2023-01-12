@@ -89,7 +89,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Gebruiker>>> GetGebruiker()
         {
-            return await _context.Gebruiker.ToListAsync();
+            return await _context.Gebruikers.ToListAsync();
         }
 
         // GET: api/Account/test1
@@ -98,7 +98,7 @@ namespace Backend.Controllers
         [HttpGet("{username}")]
         public async Task<ActionResult<Gebruiker>> GetGebruiker(string username)
         {
-            var gebruiker = await _context.Gebruiker.SingleOrDefaultAsync(g => g.UserName == username);
+            var gebruiker = await _context.Gebruikers.SingleOrDefaultAsync(g => g.UserName == username);
 
             if (gebruiker == null)
             {
@@ -145,13 +145,13 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGebruiker(string id)
         {
-            var gebruiker = await _context.Gebruiker.FindAsync(id);
+            var gebruiker = await _context.Gebruikers.FindAsync(id);
             if (gebruiker == null)
             {
                 return NotFound();
             }
 
-            _context.Gebruiker.Remove(gebruiker);
+            _context.Gebruikers.Remove(gebruiker);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -159,7 +159,7 @@ namespace Backend.Controllers
 
         private bool GebruikerExists(string id)
         {
-            return _context.Gebruiker.Any(e => e.Id == id);
+            return _context.Gebruikers.Any(e => e.Id == id);
         }
     }
 }

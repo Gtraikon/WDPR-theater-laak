@@ -5,8 +5,8 @@ public class Kaartje
 
     public double Prijs { get; set; }
 
-    public int VoorstellingID { get; set; }
+    public Voorstelling Voorstelling { get; set; }
 
-    public int GebruikerID{get; set;}
+    public Gebruiker Gebruiker{get; set;}
 
 }

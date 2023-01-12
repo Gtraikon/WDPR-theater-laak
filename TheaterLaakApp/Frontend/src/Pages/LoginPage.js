@@ -26,7 +26,7 @@ function LoginPage() {
       });
       if (response.data.success = true) {
         const token = response.data.token;
-        localStorage.setItem("jwt", token);
+        localStorage.setItem("token", token);
         localStorage.setItem("username", username);
 
         navigate("/");
