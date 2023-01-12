@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj": {}
+    "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj": {
+    "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ttson\\Desktop\\school\\SE sem 3 herkansing\\WDPR\\TheaterLaakApp\\Backend\\obj\\",
+        "projectPath": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\42_em\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ttson\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\42_em\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,9 +38,45 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.Security.Claims": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "microsoft.aspnetcore.identity.entityframeworkcore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "microsoft.entityframeworkcore": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "microsoft.entityframeworkcore.sqlite": {
+              "target": "Package",
+              "version": "[7.0.1, )"
             }
           },
           "imports": [
@@ -67,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
