@@ -14,20 +14,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Backend.Data;
 using Backend.Models;
+using Backend.ModelsObj;
 using Microsoft.AspNetCore.Cors;
 
 namespace Backend.Controllers
 {
-    public class GebruikerLogin
-{
-    [Required(ErrorMessage = "Gebruikersnaam is nodig")]
-    public string? UserName { get; init; }
-
-    [Required(ErrorMessage = "Wachtwoord is nodig")]
-    public string? Password { get; init; }
-}
-
-    [EnableCors("CorsPolicy")]
+    [EnableCors("CorsPolicy")] 
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -56,11 +48,11 @@ namespace Backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] GebruikerLogin gebruikerLogin)
+        public async Task<IActionResult> Login([FromBody] GebruikerObj gebruikerObj)
         {
-            var _user = await _userManager.FindByNameAsync(gebruikerLogin.UserName);
+            var _user = await _userManager.FindByNameAsync(gebruikerObj.UserName);
             if (_user != null)
-                if (await _userManager.CheckPasswordAsync(_user, gebruikerLogin.Password))
+                if (await _userManager.CheckPasswordAsync(_user, gebruikerObj.Password))
                 {
                     var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("awef98awef978haweof8g7aw789efhh789awef8h9awh89efh89awe98f89uawef9j8aw89hefawef"));
 

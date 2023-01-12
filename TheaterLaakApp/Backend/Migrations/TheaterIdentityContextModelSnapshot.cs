@@ -54,9 +54,6 @@ namespace Backend.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
 
@@ -92,39 +89,65 @@ namespace Backend.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Backend.Models.Kaartje", b =>
+            modelBuilder.Entity("Backend.Models.Reservering", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("GebruikerID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Prijs")
-                        .HasColumnType("REAL");
-
-                    b.Property<int>("VoorstellingID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Kaart");
-                });
-
-            modelBuilder.Entity("Backend.Models.Voorstelling", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Titel")
+                    b.Property<string>("GebruikerId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TijdslotID")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ID");
 
-                    b.ToTable("Voorstelling");
+                    b.HasIndex("GebruikerId");
+
+                    b.HasIndex("TijdslotID");
+
+                    b.ToTable("Reserveringen");
+                });
+
+            modelBuilder.Entity("Backend.Models.Tijdslot", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<TimeOnly>("BeginTijd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("Datum")
+                        .HasColumnType("TEXT");
+
+                    b.Property<TimeOnly>("EindTijd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ZaalNummer")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ZaalNummer");
+
+                    b.ToTable("Tijdsloten");
+                });
+
+            modelBuilder.Entity("Backend.Models.Zaal", b =>
+                {
+                    b.Property<int>("ZaalNummer")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Capaciteit")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ZaalNummer");
+
+                    b.ToTable("Zalen");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -260,6 +283,36 @@ namespace Backend.Migrations
                     b.HasBaseType("Backend.Models.Gebruiker");
 
                     b.HasDiscriminator().HasValue("Bezoeker");
+                });
+
+            modelBuilder.Entity("Backend.Models.Reservering", b =>
+                {
+                    b.HasOne("Backend.Models.Gebruiker", "Gebruiker")
+                        .WithMany()
+                        .HasForeignKey("GebruikerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.Tijdslot", "Tijdslot")
+                        .WithMany()
+                        .HasForeignKey("TijdslotID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gebruiker");
+
+                    b.Navigation("Tijdslot");
+                });
+
+            modelBuilder.Entity("Backend.Models.Tijdslot", b =>
+                {
+                    b.HasOne("Backend.Models.Zaal", "Zaal")
+                        .WithMany()
+                        .HasForeignKey("ZaalNummer")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Zaal");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

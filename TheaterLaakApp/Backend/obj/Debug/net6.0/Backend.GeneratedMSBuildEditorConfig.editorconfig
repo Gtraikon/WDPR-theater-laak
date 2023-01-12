@@ -8,17 +8,9 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Backend
 build_property.RootNamespace = Backend
-<<<<<<< HEAD
-build_property.ProjectDir = c:\Users\42_em\OneDrive\Documenten\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend\
+build_property.ProjectDir = C:\Users\ttson\Documents\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\42_em\OneDrive\Documenten\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend
-=======
-build_property.ProjectDir = c:\Users\ttson\Documents\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\ttson\Documents\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend
->>>>>>> reserveren
+build_property.MSBuildProjectDirectory = C:\Users\ttson\Documents\GitHub\WDPR-theater-laak\TheaterLaakApp\Backend
 build_property._RazorSourceGeneratorDebug = 
