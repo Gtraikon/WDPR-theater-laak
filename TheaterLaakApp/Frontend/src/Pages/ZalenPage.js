@@ -37,7 +37,7 @@ console.log(data);
         <div class="grid-container" key={item.zaalNummer}>
 
           <div class="tile">
-            <Link to={`/zaalreserveer?ZaalNummer=${item.zaalNummer}`}>
+            <Link to={`/zaalreserveren?ZaalNummer=${item.zaalNummer}`}>
               <div class="tile-img">
                 <img src={`afbeeldingen/${item.zaalImage}.jpg`} alt="cover" />
                 <div class="tile-text">

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 
 
-function ZaalReserveerPage() {
+function ZaalReserverenPage() {
     const [data, setData] = useState('');
     const [zaalnummer, setZaalnummer] = useState('');
     const location = useLocation();
@@ -47,4 +47,4 @@ function ZaalReserveerPage() {
         </body>
     )
 }
-export default ZaalReserveerPage;
+export default ZaalReserverenPage;
