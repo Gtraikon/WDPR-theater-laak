@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import axios from 'axios';
 import ZaalHurenFormulier from '../Components/ZaalReserveerForm';
 
-const ZalenPage = () => {
-  
 
+function ZalenPage () {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios.get("https://localhost:7020/api/zalen")
+      .then(response => {
+        setData(response.data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+console.log(data);
   return (
-    <body>
+    <>
       <div class="grid-container-h">
         <div class="smalltile">
           <h2>Zaal nodig?</h2>
@@ -20,85 +33,26 @@ const ZalenPage = () => {
           <p>Vul hier beneden de formulier in om in contact te komen en een zaal te huren of kom even langs op locatie</p>
         </div>
       </div>
-      <div class="grid-container">
-        <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/zaal1.jpg" alt="cover"/>
-            <div class="tile-text">
-              <img src="afbeeldingen/amensen.jpg"/><p>240</p>
-              </div>
-              <div class="tile-main">
-                <h3>Zaal 1</h3>
-                <p>deze zaal bevat:<br></br>-20 eersterangs stoelen<br></br>-100 tweederangs stoelen<br></br>-120 derderangs stoelen</p>
-              </div>
-          </div>
-          </div>
-          <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/zaal2.jpg" alt="cover"/>
-            <div class="tile-text">
-            <img src="afbeeldingen/amensen.jpg"/><p>180</p>
-              </div>
-              <div class="tile-main">
-                <h3>Zaal 2</h3>
-                <p>deze zaal bevat:<br></br>-20 eersterangs stoelen<br></br>-160 tweederangs stoelen</p>
-              </div>
-          </div>
-          </div>
-          <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/zaal3.jpg" alt="cover"/>
-            <div class="tile-text">
-            <img src="afbeeldingen/amensen.jpg"/> <p>90</p>
-              </div>
-              <div class="tile-main">
-                <h3>Zaal 3</h3>
-                <p>deze zaal bevat:<br></br>-10 eersterangs stoelen<br></br>-80 tweederangs stoelen<br></br></p>
-              </div>
-          </div>
-          </div>
-          <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/zaal4.jpg" alt="cover"/>
-            <div class="tile-text">
-            <img src="afbeeldingen/amensen.jpg"/><p>440</p>
-              </div>
-              <div class="tile-main">
-                <h3>Zaal 4</h3>
-                <p>deze zaal bevat:<br></br>-40 eersterangs stoelen<br></br>-200 tweederangs stoelen<br></br>-200 derderangs stoelen</p>
-              </div>
-          </div>
-          </div>
-          <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/ruimte.jpg" alt="cover"/>
-            <div class="tile-text">
-            <img src="afbeeldingen/amensen.jpg"/> <p>30</p>
-              </div>
-              <div class="tile-main">
-                <h3>Ruimtes</h3>
-                <p>Het theater laak bezit 10 kleinere ruimtes die geschikt zijn voor kleinschalige voorstellingen en verschillende workshops</p>
-              </div>
-          </div>
-          </div>
-          <div class="tile">
-          <div class="tile-img">
-          <img src="afbeeldingen/cover5.jpg" alt="cover"/>
-            <div class="tile-text">
-            <img src="afbeeldingen/amensen.jpg"/><p>lorem ipsum</p>
-              </div>
-              <div class="tile-main">
-                <h3>TBD</h3>
-                <p>hier kunnen extra zalen komen als nodig</p>
-              </div>
-          </div>
-          </div>
-      </div>
-      
-      <ZaalHurenFormulier></ZaalHurenFormulier>
+      {data.map(item => (
+        <div class="grid-container" key={item.zaalNummer}>
 
-
-    </body>
+          <div class="tile">
+            <Link to={`/zaalreserveer?ZaalNummer=${item.zaalNummer}`}>
+              <div class="tile-img">
+                <img src={`afbeeldingen/${item.zaalImage}.jpg`} alt="cover" />
+                <div class="tile-text">
+                  <img src="afbeeldingen/amensen.jpg" /><p>{item.capaciteit}</p>
+                </div>
+                <div class="tile-main">
+                  <h3>Zaal {item.zaalNummer}</h3>
+                  <p>deze zaal bevat:<br></br>-{item.eersterangstoelen} eersterangs stoelen<br></br>-{item.tweedeRangStoelen} tweederangs stoelen<br></br>-{item.derdeRangStoelen} derderangs stoelen</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </>
   );
 };
 

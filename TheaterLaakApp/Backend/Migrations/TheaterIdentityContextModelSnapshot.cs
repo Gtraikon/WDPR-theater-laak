@@ -89,6 +89,31 @@ namespace Backend.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("Backend.Models.Kaartje", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GebruikerId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Prijs")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("VoorstellingID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("GebruikerId");
+
+                    b.HasIndex("VoorstellingID");
+
+                    b.ToTable("Kaartjes");
+                });
+
             modelBuilder.Entity("Backend.Models.Reservering", b =>
                 {
                     b.Property<int>("ID")
@@ -136,6 +161,21 @@ namespace Backend.Migrations
                     b.ToTable("Tijdsloten");
                 });
 
+            modelBuilder.Entity("Backend.Models.Voorstelling", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Titel")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Voorstellingen");
+                });
+
             modelBuilder.Entity("Backend.Models.Zaal", b =>
                 {
                     b.Property<int>("ZaalNummer")
@@ -144,6 +184,23 @@ namespace Backend.Migrations
 
                     b.Property<int>("Capaciteit")
                         .HasColumnType("INTEGER");
+
+                    b.Property<int>("DerdeRangStoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Eersterangstoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TweedeRangStoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ZaalImage")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ZaalOmschrijving")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ZaalNummer");
 
@@ -283,6 +340,25 @@ namespace Backend.Migrations
                     b.HasBaseType("Backend.Models.Gebruiker");
 
                     b.HasDiscriminator().HasValue("Bezoeker");
+                });
+
+            modelBuilder.Entity("Backend.Models.Kaartje", b =>
+                {
+                    b.HasOne("Backend.Models.Gebruiker", "Gebruiker")
+                        .WithMany()
+                        .HasForeignKey("GebruikerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.Voorstelling", "Voorstelling")
+                        .WithMany()
+                        .HasForeignKey("VoorstellingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gebruiker");
+
+                    b.Navigation("Voorstelling");
                 });
 
             modelBuilder.Entity("Backend.Models.Reservering", b =>

@@ -6,7 +6,10 @@
   margin: auto;
   text-align: center;
 }
-
+a{
+  text-decoration: none;
+  color: black;
+}
 .calender-header {
   display: flex;
 }
@@ -78,7 +81,7 @@ margin-top: 20px;
   transform: scale(1.2);
 }
 /* Navbar*/
-header {
+
 .body{
   margin: 20px;
 }
@@ -169,6 +172,7 @@ header nav a {
   padding: 16px;
   border-left: #333;
   color: white;
+}
 header nav a {
   position: relative;
   top: 20px;
@@ -362,11 +366,11 @@ section .info{
 }
 /* zalen*/
 .grid-container-h{
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto auto auto;
-  gap: 10px;
+  
   width: calc(100%-40px);
-  padding: 0 20px;
+  
   background-image: url("");
   background-color: antiquewhite;
   margin-bottom: 20px;
@@ -374,7 +378,7 @@ section .info{
 }
 .grid-container{
   
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto auto auto;
   gap: 10px;
   width: calc(100%-40px);
@@ -383,6 +387,7 @@ section .info{
   
   
 }
+
 .tile{
  
   width: 33.3333%;
@@ -396,18 +401,19 @@ section .info{
   
 }
 .smalltile{
-  width: 33.3333%;
-  min-height: 340px;
-  width: 50%;
-  min-width: 380px;
+  padding: 5px;
+  
+  
+  
   margin-bottom: 25px;
-  font-size: 30px;
+  font-size: 16px;
   text-align: center;
 }
 .tile-img{
   border: 1px solid black;
   background-color: antiquewhite;
   max-width: 394px;
+  
   
 }
 .tile-text{
@@ -428,11 +434,11 @@ section .info{
 }
 .smalltile h2{
   color:#D91C1C;
-  text-align: left;
+  text-align: center;
 }
 .smalltile p{
   color: black;
-  text-align: left;
+  text-align: center;
 }
 .tile input{
   border-radius: 10px;
