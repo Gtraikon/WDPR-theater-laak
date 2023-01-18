@@ -59,6 +59,8 @@ namespace Backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] GebruikerObj gebruikerObj)
         {
+
+
             var _user = await _userManager.FindByNameAsync(gebruikerObj.UserName);
             if (_user != null)
                 if (await _userManager.CheckPasswordAsync(_user, gebruikerObj.Password))
