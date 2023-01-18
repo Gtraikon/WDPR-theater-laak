@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -39,33 +39,25 @@ function LoginPage() {
     }
   }
 
-  function isAuthenticated() {
-    // Get the JWT from local storage
-    const token = localStorage.getItem("jwt");
-  
-    // If the JWT exists, the user is authenticated
-    if (token) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="username" value={username} onChange={handleEmailChange} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </label>
-      <br />
-      <button type="submit">Log In</button>
-      {error && <p className="error" style={{color: "red"}}>{error}</p>}
-    </form>
+    <div className='login'>
+      <h2>Inloggen</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span className="username">Gebruikersnaam:</span>
+          <input type="username" value={username} onChange={handleEmailChange} />
+        </label>
+        <br />
+        <label>
+          <span className="password">Wachtwoord:</span>
+          <input type="password" value={password} onChange={handlePasswordChange} />
+        </label>
+        <br />
+        <button type="submit">Log In</button>
+        {error && <p className="error" style={{ color: "red" }}>{error}</p>}
+      </form>
+      <Link to="/registreren">Registreer als een nieuwe gebruiker</Link>
+    </div>
   );
 }
 

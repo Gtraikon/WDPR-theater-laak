@@ -1,24 +1,26 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
     return (
         <header>
             <nav>
-                
-                    <img src="/afbeeldingen/Logo.png" alt="Laak theater" href="http://localhost:3000"/>
-
-                <a href="#">Programma</a>
-                <a href="#">Tickets</a>  
-                <a href="/">Home</a>
-                <a href="/zalen">Zaalverhuur</a>
-                <a href="#">Donateurs</a>
-                <div class="dropdown">
+                <Link to="/"><img src="/afbeeldingen/Logo.png" alt="Laak theater" style={{height: "60px"}}/></Link>
+                <ul>
+                    <li><a href="#">Programma</a></li>
+                    <li><a href="/tickets">Tickets</a></li>
+                    <li><a href="/zalen">Zaalverhuur</a></li>
+                    <li><a href="/doneren">Doneren</a></li>
+                    <li><a href="/inloggen">Inloggen</a></li>
+                    <li><a href="/registreren">registreren</a></li>
+                    <li><div class="dropdown">
                         <button class="dropbtn">More</button>
                         <div class="dropdown-content">
                             <a href="#">Over ons</a>
                             <a href="/contact">Contact</a>
-                            <a href="#">Voorstellingen</a>
+                            <a href="/voorstellingen">Voorstellingen</a>
                         </div>
-                        </div>
-                
+                    </div></li>
+                </ul>
             </nav>
         </header>
     )

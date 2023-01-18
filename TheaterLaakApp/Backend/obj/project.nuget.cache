@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "99pbDhjh5Da/Y6GjAPFinjiMtQarTK4atm47Zx4KMOG2uiXTWSGCnqS/y5fV5KTXKukWJN0zX1zHg4Q1hy4EQg==",
+  "dgSpecHash": "B4R6QbZPT4xDEWu7KFdkjMd6s5mZXhg5KX//mfHDr6NyC0UZduCoALq432BKIQBEnzcMh/zZm3xXGqcUdQaQeA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
@@ -47,7 +47,7 @@
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.1\\microsoft.entityframeworkcore.sqlite.7.0.1.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.1\\microsoft.entityframeworkcore.sqlite.core.7.0.1.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.1\\microsoft.entityframeworkcore.sqlserver.7.0.1.nupkg.sha512",
-    "C:\\Users\\ttson\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.9\\microsoft.entityframeworkcore.tools.6.0.9.nupkg.sha512",
+    "C:\\Users\\ttson\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.1\\microsoft.entityframeworkcore.tools.7.0.1.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

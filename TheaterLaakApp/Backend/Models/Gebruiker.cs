@@ -6,5 +6,7 @@ namespace Backend.Models;
     public class Gebruiker : IdentityUser
     {
         [NotMapped]
-        public string? Password { get; init; }
+        public string Password { get; init; }
+        [NotMapped]
+        public int aantalGedoneerd { get; set; } = 0;
     }

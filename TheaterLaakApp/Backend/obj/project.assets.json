@@ -1243,10 +1243,10 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/6.0.9": {
+      "Microsoft.EntityFrameworkCore.Tools/7.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "6.0.9"
+          "Microsoft.EntityFrameworkCore.Design": "7.0.1"
         },
         "compile": {
           "lib/net6.0/_._": {}
@@ -5304,17 +5304,17 @@
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/6.0.9": {
-      "sha512": "HqdzDohxXfh7onMfrKxI3qtRu+TF246dNVQ1Yjql7v69CfeKWFyRxLbuNG/ScGh9dZdXHDvNjqXb4Ou9GHflew==",
+    "Microsoft.EntityFrameworkCore.Tools/7.0.1": {
+      "sha512": "WVxitSIa/U8jQ1GGtEcDHXlVu3VeISq8Nmg6Wa3iXrx9/Tzh/dOgsDd4kpJvC1RFnFTxJ2qGd+9YqwV18mUyeg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/6.0.9",
+      "path": "microsoft.entityframeworkcore.tools/7.0.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/_._",
-        "microsoft.entityframeworkcore.tools.6.0.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.7.0.1.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -11294,10 +11294,11 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "MessagePackAnalyzer >= 2.1.152",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.9",
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.9",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "System.Security.Claims >= 4.3.0",
@@ -11307,24 +11308,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\42_em\\.nuget\\packages\\": {}
+    "C:\\Users\\ttson\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
-      "packagesPath": "C:\\Users\\42_em\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\42_em\\OneDrive\\Documenten\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
+      "projectPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\42_em\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ttson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11343,6 +11350,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "MessagePackAnalyzer": {
+            "target": "Package",
+            "version": "[2.1.152, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[6.0.9, )"
@@ -11361,7 +11372,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.0.9, )"
+            "version": "[7.0.1, )"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
@@ -11407,7 +11418,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,3 +1,10 @@
+.center{
+  max-width: 1000px;
+  margin:auto;
+  justify-content: center;
+  text-align: center;
+}
+
 .filters {
   width: 75%;
   display: flex;
@@ -78,7 +85,6 @@ margin-top: 20px;
   transform: scale(1.2);
 }
 /* Navbar*/
-header {
 .body{
   margin: 20px;
 }
@@ -102,17 +108,19 @@ margin-top: 20px;
   transform: scale(1.2);
 }
 /* Navbar*/
+nav ul{
+  padding-inline-start: 20px;
+}
+
 header {
   background-color: #333;
   color: #fff;
   border: 0;
   
   text-align: center;
-  padding: 10px;
   
 }
 .dropbtn{
-  margin-top: 15px;
   background-color: black;
   color: #FFFFFF;
   padding:16px;
@@ -159,19 +167,8 @@ header nav {
   display: flex;
 }
 
-
-
 header nav a {
   position: relative;
-  top: 20px;
-  text-align: center;
-  font-weight: bold;
-  padding: 16px;
-  border-left: #333;
-  color: white;
-header nav a {
-  position: relative;
-  top: 20px;
   text-align: center;
   font-weight: bold;
   padding: 16px;
@@ -182,6 +179,10 @@ header nav a {
 
 header nav a:hover {
   color: #ccc;
+}
+
+nav li {
+  display: inline;
 }
 
 main {
@@ -508,3 +509,64 @@ section .info{
 .item3 ul li{
 padding: 10px 0;
 }
+
+.doneerbuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.doneerbuttons button{
+  display: block;
+  margin: 0 5px;
+  padding: 15px;
+}
+
+.theaterdoneerform button{
+  margin-top: 5px;;
+}
+
+.hoeveelheid-d{
+ margin-right: 15px; 
+}
+
+.tekst-d{
+  margin-right: 70.5px;  
+}
+
+.doneerlink{
+  text-decoration: none;
+  color: black;
+}
+
+.doneerlink a:hover {
+  color: #ccc;
+}
+
+.username{
+  margin-right: 15px; 
+ }
+ 
+ .password{
+   margin-right: 45px;  
+ }
+
+ .email{
+  margin-right: 48px;  
+}
+
+ .login button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 3px 134px;
+ }
+
+ .registreer button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 3px 118px;
+ }
+
+
+ 
