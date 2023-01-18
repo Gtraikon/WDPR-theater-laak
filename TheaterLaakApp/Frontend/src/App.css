@@ -88,10 +88,6 @@ margin-top: 20px;
   transform: scale(1.2);
 }
 /* Navbar*/
-<<<<<<< HEAD
-=======
-
->>>>>>> zalenlijst
 .body{
   margin: 20px;
 }
@@ -176,19 +172,6 @@ header nav {
 
 header nav a {
   position: relative;
-<<<<<<< HEAD
-=======
-  top: 20px;
-  text-align: center;
-  font-weight: bold;
-  padding: 16px;
-  border-left: #333;
-  color: white;
-}
-header nav a {
-  position: relative;
-  top: 20px;
->>>>>>> zalenlijst
   text-align: center;
   font-weight: bold;
   padding: 16px;
