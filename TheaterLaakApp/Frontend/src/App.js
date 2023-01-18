@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} ></Route>
           <Route exact path="/zalen" element={<ZalenPage />} ></Route>
           <Route exact path="/inloggen" element={<LoginPage />} ></Route>
-          <Route exact path="/tickets" element={<TicketPage />} ></Route>
+          <Route exact path="/tickets/:id" element={<TicketPage />} ></Route>
           <Route exact path="/Voorstellingen" element={<VoorstellingPage />} ></Route>
           <Route exact path="/contact" element={<ContactPage />} ></Route>
           <Route exact path="/zaalreserveren" element={<ZaalReserverenPage />} ></Route>
