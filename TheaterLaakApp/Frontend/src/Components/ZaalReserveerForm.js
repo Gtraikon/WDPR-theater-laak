@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
 const ZaalHurenFormulier = () => {
+  const [messageStyle, setMessageStyle] = useState({ color: "red" });
+
   const username = localStorage.getItem("username");
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     datum: '',
     begintijd: '',
     eindtijd: '',
     zaal: '',
   });
+
+  useEffect(() => {
+    if (message == "Uw Reservering is succesvol") {
+      setMessageStyle({ color: "green" })
+    }
+    else {
+      setMessageStyle({ color: "red" })
+    }
+  }, [message]);
 
   const handleChange = (event) => {
     setFormData({
@@ -21,9 +32,12 @@ const ZaalHurenFormulier = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    try {
-      const response = await axios.post('https://localhost:7020/api/reservering', {
+    console.log(formData.zaal);
+    console.log(formData.datum);
+    console.log(formData.begintijd);
+    console.log(formData.eindtijd);
+    if (formData.zaal && formData.datum && formData.begintijd && formData.eindtijd) {
+      await axios.post('https://localhost:7020/api/reservering', {
         Gebruikersnaam: username,
         Zaalnummer: formData.zaal,
         Jaar: formData.datum.split("-")[0],
@@ -33,17 +47,14 @@ const ZaalHurenFormulier = () => {
         BeginMinuut: formData.begintijd.split(":")[1],
         EindUur: formData.eindtijd.split(":")[0],
         EindMinuut: formData.eindtijd.split(":")[1]
-      });
-      /*if (response.data.success = true) {
-        navigate("/");
-      } else {
-        setError(response.data.error);
-      }*/
-    } catch (error) {
-      console.error(error);
-      setError("Het reserveren is niet gelukt");
+      })
+        .then(response => {setMessage(response.data.message);})
+    } else {
+      setMessage("Voer aub alle velden in");
+      setMessageStyle({ color: "red" })
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -92,6 +103,7 @@ const ZaalHurenFormulier = () => {
       <br />
 
       <button type="submit" className="form-button">Zaal huren</button>
+      <p style={messageStyle}>{message}</p>
     </form>
   );
 };

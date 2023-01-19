@@ -30,6 +30,7 @@ function ContactPage() {
                     <p><b>Email:</b>info@theaterlaak.nl</p>
                     <p><b>IBAN: </b>NL09INGB8888888888</p>
                     <p>Tnv Stichting theater Laak, Den Haag</p>
+                    <p><b>Elke dag geopend van 12:00 - 23:00</b></p>
                 </div>
             </section>
         </body>

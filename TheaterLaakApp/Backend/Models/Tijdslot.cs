@@ -17,4 +17,12 @@ public class Tijdslot{
             || (r.BeginTijd == this.BeginTijd || r.EindTijd == this.EindTijd)
             )).Any());
     }
+
+    public Boolean BinnenOpeningstijden(){
+        TimeOnly openingstijd = new TimeOnly(12, 0);
+        TimeOnly sluitingstijd = new TimeOnly(23, 0);
+        Boolean beginGoed = (this.BeginTijd >= openingstijd && this.BeginTijd < sluitingstijd);
+        Boolean eindGoed = (this.EindTijd > openingstijd && this.EindTijd <= sluitingstijd);
+        return beginGoed && eindGoed;
+    }
 }

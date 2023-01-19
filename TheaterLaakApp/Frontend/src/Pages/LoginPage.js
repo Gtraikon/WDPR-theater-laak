@@ -24,15 +24,11 @@ function LoginPage() {
         UserName: username,
         Password: password
       });
-      if (response.data.success = true) {
         const token = response.data.token;
         localStorage.setItem("token", token);
         localStorage.setItem("username", username);
 
         navigate("/");
-      } else {
-        setError(response.data.error);
-      }
     } catch (error) {
       console.error(error);
       setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");

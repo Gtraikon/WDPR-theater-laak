@@ -36,7 +36,7 @@ function GoedDoelDoneerPage() {
     event.preventDefault();
     const fakepayData = {
       amount: hoeveelheid,
-      url: `http://localhost:3000/donerengoeddoel/doneren?goeddoel=${parameter}`
+      url: `https://localhost:7020/api/doneer`
     }
     axios.post('https://fakepay.azurewebsites.net/', fakepayData, {
       headers: {
@@ -47,11 +47,15 @@ function GoedDoelDoneerPage() {
       .catch(err => console.log(err));
 
     try {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${tokenStr}`;
-      const response = await axios.post('https://ikdoneer.azurewebsites.net/api/donatie', {
+      const data = {
         Doel: parameter,
         Hoeveelheid: hoeveelheid,
         Tekst: tekst
+      }
+      const response = await axios.post('https://ikdoneer.azurewebsites.net/api/donatie', data,  {
+        headers: {
+          'Authorization': `Bearer ${tokenStr}`
+        }
       });
       if (response.Message = "succes") {
         console.log('Donatie gelukt!');
