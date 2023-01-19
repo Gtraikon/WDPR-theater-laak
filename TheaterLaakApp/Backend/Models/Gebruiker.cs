@@ -8,5 +8,5 @@ namespace Backend.Models;
         [NotMapped]
         public string Password { get; init; }
         [NotMapped]
-        public int aantalGedoneerd { get; set; } = 0;
+        public int AantalGedoneerd { get; set; } = 0;
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import ZaalHurenFormulier from "../Components/ZaalReserveerForm";
 
-function ZaalPage() {
+function ZaalReserverenPage() {
     return (
         <body>
 
@@ -30,4 +30,4 @@ function ZaalPage() {
         </body>
     )
 }
-export default ZaalPage;
+export default ZaalReserverenPage;

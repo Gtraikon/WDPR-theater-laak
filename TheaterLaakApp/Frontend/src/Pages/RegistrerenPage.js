@@ -3,6 +3,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function RegistrerenPage() {
+    const errorTranslations = {
+        'PasswordTooShort': 'Het wachtwoord is te kort',
+        'PasswordRequiresNonAlphanumeric': 'Het wachtwoord moet minstens één speciaal teken bevatten',
+        'PasswordRequiresDigit': 'Het wachtwoord moet minstens één cijfer bevatten',
+        'PasswordRequiresLower': 'Het wachtwoord moet minstens één kleine letter bevatten',
+        'PasswordRequiresUpper': 'Het wachtwoord moet minstens één hoofdletter bevatten',
+        'PasswordRequiresUniqueChars': 'Het wachtwoord moet minstens 1 uniek teken bevatten',
+        "InvalidUserName": "Uw gebruikersnaam kan alleen letters of cijfers bevatten",
+        "DuplicateUserName": "Deze gebruikersnaam bestaat al"
+    }
+
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -24,24 +35,33 @@ function RegistrerenPage() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        try {
-            const response = await axios.post('https://localhost:7020/api/account/registreren', {
-                UserName: username,
-                Password: password,
-                Email: email
-            });
-            if (response.data.success = true) {
-                const token = response.data.token;
-                localStorage.setItem("token", token);
-                localStorage.setItem("username", username);
+        if (email) {
+            try {
+                const response = await axios.post('https://localhost:7020/api/account/registreer', {
+                    Email: email,
+                    UserName: username,
+                    Password: password
+                });
 
-                navigate("/");
-            } else {
-                setError(response.data.error);
+                if (response.status === 201) {
+                    navigate("/inloggen");
+                }
+            } catch (error) {
+                if (error.response.status === 400) {
+                    const errors = error.response.data.errors;
+                    const translatedErrors = errors.map(error => {
+                        return {
+                            code: error.code,
+                            description: errorTranslations[error.code]
+                        }
+                    });
+                    setError(translatedErrors[0].description);
+                } else {
+                    setError("Er is iets verkeerd gegeaan, probeer het later opnieuw.");
+                }
             }
-        } catch (error) {
-            console.error(error);
-            setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
+        } else {
+            setError("Een e-mailadres moet ingevoerd worden");
         }
     }
 

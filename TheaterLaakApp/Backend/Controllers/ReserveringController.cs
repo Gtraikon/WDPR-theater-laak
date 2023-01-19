@@ -30,7 +30,7 @@ namespace Backend.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Reservering>> PostReservering(ReserveringObj reserveringObj)
+        public async Task<Response> PostReservering(ReserveringObj reserveringObj)
         {
             Gebruiker gebruiker = await _userManager.FindByNameAsync(reserveringObj.Gebruikersnaam);
             Zaal zaal = await _context.Zalen.FindAsync(reserveringObj.ZaalNummer);
@@ -42,13 +42,16 @@ namespace Backend.Controllers
 
             if (!tijdslot.Vrij(_context))
             {
-                return Problem("Het Tijdslot is niet vrij");
+                return new Response() { code = 400, message = "Het tijdslot is niet vrij" };
+            }
+            if(!tijdslot.BinnenOpeningstijden()){
+                return new Response() { code = 400, message = "Dit tijdslot valt buiten de openingstijden" };
             }
 
             _context.Reserveringen.Add(reservering);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetReservering", new { id = reservering.ID }, reservering);
+            return new Response() { code = 200, message = "Uw Reservering is succesvol" };
         }
 
         // GET: api/Reservering

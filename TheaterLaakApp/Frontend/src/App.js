@@ -14,7 +14,7 @@ import LoginPage from './Pages/LoginPage';
 import VoorstellingPage from './Pages/VoorstellingPage';
 import ZalenPage from './Pages/ZalenPage';
 import ContactPage from './Pages/ContactPage';
-import ZaalReserverenPage from './Pages/ZaalReserveren';
+import ZaalReserverenPage from './Pages/ZaalReserverenPage';
 import DonerenPage from "./Pages/DonerenPage";
 import GoedDoelPage from "./Pages/GoedDoelPage";
 import GoedDoelDoneerPage from "./Pages/GoedDoelDoneerPage";
