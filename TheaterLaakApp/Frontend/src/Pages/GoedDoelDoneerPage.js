@@ -52,7 +52,6 @@ function GoedDoelDoneerPage() {
         Hoeveelheid: hoeveelheid,
         Tekst: tekst
       }
-      axios.defaults.headers.common["Authorization"] = `Bearer ${tokenStr}`;
       const response = await axios.post('https://ikdoneer.azurewebsites.net/api/donatie', data,  {
         headers: {
           'Authorization': `Bearer ${tokenStr}`
