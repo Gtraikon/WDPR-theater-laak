@@ -2,10 +2,10 @@ import React from "react";
 
 function ContactPage() {
     return (
-
-        <body>
+<div className="ContactPage">
+        
             <div class="map">
-                <img src="afbeeldingen/map.jpg" id="map"></img>
+                <img src="afbeeldingen/map.jpg" ></img>
             </div>
             <section>
                 <div class="vragen">
@@ -32,7 +32,7 @@ function ContactPage() {
                     <p>Tnv Stichting theater Laak, Den Haag</p>
                 </div>
             </section>
-        </body>
+        </div>
     )
 
 }
