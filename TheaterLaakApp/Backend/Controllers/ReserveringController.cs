@@ -55,6 +55,7 @@ namespace Backend.Controllers
         }
 
         // GET: api/Reservering
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Reservering>>> GetReserveringen()
         {
@@ -66,6 +67,7 @@ namespace Backend.Controllers
         }
 
         // GET: api/Reservering/5
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Reservering>> GetReservering(int id)
         {
@@ -85,6 +87,7 @@ namespace Backend.Controllers
 
         // PUT: api/Reservering/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutReservering(int id, Reservering reservering)
         {
@@ -115,6 +118,7 @@ namespace Backend.Controllers
         }
 
         // DELETE: api/Reservering/5
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReservering(int id)
         {

@@ -4,6 +4,7 @@ using Backend.Data;
 using Backend.Models;
 using Backend.ModelsObj;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers;
 
@@ -21,6 +22,7 @@ public class KaartjesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     [Route("Kopen")]
     public async Task<ActionResult> Kopen([FromBody] KoopObj koopObj)
     {

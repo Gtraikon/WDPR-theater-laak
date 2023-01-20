@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
 {
@@ -22,12 +23,6 @@ namespace Backend.Controllers
             _context = context;
         }
 
-//[HttpGet("zaalgegevens")]
-
-//public async Task<ActionResult> ZaalGegevens([FromBody]Zaal zaal){
-
-
-        // GET: api/Zalen
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Zaal>>> GetZalen()
         {
@@ -56,8 +51,7 @@ namespace Backend.Controllers
             return zaal;
         }
 
-        // PUT: api/Zalen/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutZaal(int id, Zaal zaal)
         {
@@ -87,8 +81,7 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Zalen
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpPost]
         public async Task<ActionResult<Zaal>> PostZaal(Zaal zaal)
         {
@@ -102,7 +95,7 @@ namespace Backend.Controllers
             return CreatedAtAction("GetZaal", new { id = zaal.ZaalNummer }, zaal);
         }
 
-        // DELETE: api/Zalen/5
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteZaal(int id)
         {
