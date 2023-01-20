@@ -1,0 +1,469 @@
+*{
+    box-sizing: border-box;
+}
+.body{
+  margin: 20px;
+  margin-top: 110px;  
+}
+
+/*navbar*/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+    z-index: 1;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 97%;
+  }
+  
+  .navbar-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  
+  .navbar-menu {
+    display: none;
+  }
+  
+  .navbar-menu-bar {
+    width: 2rem;
+    height: 0.25rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+  }
+  
+  .navbar-item {
+    margin-left: 1rem;
+
+  }
+  
+  .navbar-link {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem;
+    }
+  
+    .navbar-logo {
+      font-size: 1.25rem;
+    }
+  
+    .navbar-menu {
+      display: block;
+    }
+    .navbar-menu-bar {
+        width: 2rem;
+        height: 0.25rem;
+        margin-bottom: 0.5rem;
+        background-color: #fff;
+      }
+    .navbar-nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 2rem;
+        }
+        
+        .navbar-item {
+        margin: 1rem 0;
+        text-align: center;
+        border-bottom: 3px solid black;
+        width: 100%;
+        }
+
+        
+        .open .navbar-nav {
+        display: flex;
+        }
+        .navbar-menu.open {
+            display: block;
+        }
+        
+        .navbar-nav.open {
+            display: flex;
+        }
+        }
+/*footer*/
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    
+  }
+/*Homepage*/
+.HomePage{
+    background-image: url("C:\Users\raina\OneDrive\Documenten\GitHub\WDPR\WDPR-Theater-laak\TheaterLaakApp\Frontend\public\afbeeldingen\theater.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: whitesmoke;
+    
+} 
+.HomePage h1{
+    margin-top: 7%;
+    text-align: center;
+    
+}
+.uitlichting-container{
+    display: flex;
+  
+  
+  
+  }
+  .uitlichting-feature{
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    transition: transform.2s;
+    
+  }
+  .uitlichting-feature:hover{
+    transform: scale(1.2);
+  }
+  .uitlichting-feature img{
+    width: 75%;
+  }
+  @media screen and (max-width: 768px) {
+    .uitlichting-feature{
+    
+        padding: 0;
+        margin: 0;
+    }
+    .HomePage h1{
+        font-size: 15px;
+    }
+    
+  }
+  /*login/registreren*/
+  .username{
+    margin-right: 15px; 
+   }
+   
+   .password{
+     margin-right: 40px;  
+   }
+  
+   .email{
+    margin-right: 48px;  
+  }
+  
+   .login button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px 134px;
+   }
+   .registreer button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px 118px;
+   }
+/*contact*/
+.map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+}
+img{
+    max-width: 100%;
+    height:auto;
+}
+section{
+    display: flex;
+    flex-wrap: wrap;
+  }
+ .vragen, .info{
+    flex: 1;
+    padding: 20px;
+ }
+  
+  .vragen input[type='email']{
+    width: 200px;
+  }
+  .vragen input[type='text']{
+    width: 200px;
+    height: 100px;
+    
+    left: 44px;
+  
+  }
+  .vragen input{
+    margin: 10px;
+    position: relative;
+    
+  }
+  .vragen input[type='button']{
+    left: 44px;
+    background-color: #D91C1C;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .vragen input[type='button']:hover{
+    background-color: gray;
+  }
+  .vragen-content h1{
+    
+    font-size: 30px;
+    width: fit-content;
+    margin: 0;
+    margin-top: 10px;
+  }
+  section .info{
+    width: 50%;
+    margin: 10px;
+  }
+  .vragen-content{
+    border:2px dashed red;
+    margin-top: 10px;
+    padding-left: 5px;
+    border-radius: 10px;
+    float: right;
+  }
+  @media screen and(max-widhr:768px){
+    
+      .vragen, .info {
+        flex: 100%;
+      }
+  }
+  /*zalen*/
+  .grid-container-h{
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    
+    width: calc(100%-40px);
+    
+    background-image: url("");
+    background-color: lightgray;
+    margin-bottom: 20px;
+  
+  }
+  .grid-container{
+    
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    width: calc(100%-40px);
+    padding:0 20px;
+    
+    
+    
+  }
+  
+  .tile{
+   
+    width: 33.3333%;
+    min-height: 680px;
+    width: 50%;
+    min-width: 380px;
+    margin-bottom: 25px;
+    display: flex;
+    font-size: 30px;
+    text-align: center;
+    
+  }
+  .smalltile{
+    padding: 5px;
+      
+    margin-bottom: 25px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .tile-img{
+    border: 1px solid black;
+    background-color: antiquewhite;
+    max-width: 394px;
+    
+    
+    
+  }
+  .tile-text{
+    
+    display:flex;
+    border: 1px solid black;
+   padding-left: 20px;
+    font-size: 24px;
+    max-height: 50px;
+    padding: 5px;
+  }
+  .tile-text p{
+    position: relative;
+    min-width: 380px;
+    bottom: 20px;
+    
+  }
+  .smalltile h2{
+    color:#D91C1C;
+    text-align: center;
+  }
+  .smalltile p{
+    color: black;
+    text-align: center;
+  }
+  .tile input{
+    border-radius: 10px;
+  }
+  .tile input[type='button'] {
+    background-color: green;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+  }
+  @media only screen and (max-width: 768px){
+    .grid-container {
+        grid-template-columns: auto;
+        padding: 0;
+      }
+      .tile-text p {
+        font-size: 18px;
+      }
+      .tile {
+        min-width: 300px;
+        min-height: 400px;
+      }
+.smalltile{
+    margin: 0;
+}
+  }
+  /*individuele zaal pages*/
+  .item1 { grid-area: header; }
+.item2 { grid-area: menu;}
+.item2 img { width: 100%; }
+.item3 { grid-area: main; background-color: whitesmoke; }
+.item4 { grid-area: right; text-align: center;}
+.item5 { grid-area: footer;  }
+.menu-container{
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu menu menu menu menu main'
+    'footer footer footer footer footer right';
+  gap: 10px;
+  background-color: p;
+  
+  padding: 10px;
+  max-width: 1050px;
+  margin: auto;
+  background-color: gainsboro;
+}
+.menu-container > div {
+  margin: 0 20px;
+  
+  padding: 20px ;
+  font-size: 30px;
+  
+}
+.menu-container .item1 h1{
+  font-size: 36px;
+  margin: 0;
+}
+.menu-container .item1 p{
+  font-size: 11px;
+}
+.menu-container .item1{
+  background-color: #989898;
+  text-align: center;
+  
+}
+#zaalform{
+
+  max-height: 680px;
+  
+  border-radius: 10px;
+  max-width: 380px;
+  display: flex;
+  font-size: 20px;
+  text-align: center;
+}
+#zaalform input{
+  border-radius: 10px;
+}
+.menu-container .item5 p{
+  font-size: 20px;
+}
+.menu-container .item5{
+  text-align: left;
+  font-family:sans-serif;
+}
+.item3 ul li{
+padding: 10px 0;
+}
+@media only screen and (max-width: 600px) {
+    .menu-container {
+      grid-template-areas:
+        'header'
+        'menu '
+        'main'
+        'right'
+        'footer';
+    }
+    .menu-container > div {
+      font-size: 20px;
+    }
+    #zaalform {
+      max-width: 100%;
+    }
+  }
+/* doneren*/
+.doneerbuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+  }
+  
+  .doneerbuttons button{
+    display: block;
+    margin: 0 5px;
+    padding: 15px;
+  }
+  
+  .theaterdoneerform button{
+    margin-top: 5px;;
+  }
+  
+  .hoeveelheid-d{
+   margin-right: 15px; 
+  }
+  
+  .tekst-d{
+    margin-right: 70.5px;  
+  }
+  
+  .doneerlink{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .doneerlink a:hover {
+    color: #ccc;
+  }

@@ -2,10 +2,10 @@ import React from "react";
 
 function ContactPage() {
     return (
-
-        <body>
+<div className="ContactPage">
+        
             <div class="map">
-                <img src="afbeeldingen/map.jpg" id="map"></img>
+                <img src="afbeeldingen/map.jpg" ></img>
             </div>
             <section>
                 <div class="vragen">
@@ -33,7 +33,7 @@ function ContactPage() {
                     <p><b>Elke dag geopend van 12:00 - 23:00</b></p>
                 </div>
             </section>
-        </body>
+        </div>
     )
 
 }
