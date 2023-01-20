@@ -27,8 +27,15 @@ function LoginPage() {
         const token = response.data.token;
         localStorage.setItem("token", token);
         localStorage.setItem("username", username);
-
-        navigate("/");
+        const url = localStorage.getItem("redirect");
+        if(url){
+          navigate(url);
+          window.location.reload();
+          localStorage.setItem("redirect", "/")
+        }else{
+          navigate("/");
+          window.location.reload();
+        }
     } catch (error) {
       console.error(error);
       setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");

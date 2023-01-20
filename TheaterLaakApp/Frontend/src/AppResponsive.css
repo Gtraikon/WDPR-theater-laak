@@ -116,7 +116,7 @@ footer {
   }
 /*Homepage*/
 .HomePage{
-    background-image: url("C:\Users\raina\OneDrive\Documenten\GitHub\WDPR\WDPR-Theater-laak\TheaterLaakApp\Frontend\public\afbeeldingen\theater.png");
+    background-image: url("../public/afbeeldingen/theater.png");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
