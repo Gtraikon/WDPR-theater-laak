@@ -87,17 +87,15 @@ namespace Backend.Controllers
 
             return Unauthorized(new { success = false, error = "U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd" });
         }
-        // GET: api/Account
-        [Authorize]
+        
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Gebruiker>>> GetGebruiker()
         {
             return await _context.Gebruikers.ToListAsync();
         }
 
-        // GET: api/Account/test1
-        //[Authorize(Roles = "Medewerker")]
-        //[Authorize]
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpGet("{username}")]
         public async Task<ActionResult<Gebruiker>> GetGebruiker(string username)
         {
@@ -111,9 +109,7 @@ namespace Backend.Controllers
             return gebruiker;
         }
 
-        // PUT: api/Account/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize(Roles = "Medewerker")]
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGebruiker(string id, Gebruiker gebruiker)
         {
@@ -142,9 +138,7 @@ namespace Backend.Controllers
 
             return NoContent();
         }
-
-        // DELETE: api/Account/5
-        [Authorize(Roles = "Medewerker")]
+        [Authorize(Roles = "Admin, Medewerker")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGebruiker(string id)
         {

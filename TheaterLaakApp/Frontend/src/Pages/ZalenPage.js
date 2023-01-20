@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import ZaalHurenFormulier from '../Components/ZaalReserveerForm';
-
 
 function ZalenPage () {
   const [data, setData] = useState([]);
@@ -10,7 +8,6 @@ function ZalenPage () {
     axios.get("https://localhost:7020/api/zalen")
       .then(response => {
         setData(response.data);
-        console.log(data);
       })
       .catch(error => {
         console.log(error);
