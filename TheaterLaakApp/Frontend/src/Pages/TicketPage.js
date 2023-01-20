@@ -19,7 +19,7 @@ function PurchaseForm() {
     await axios.post('https://localhost:7020/api/kaartjes/kopen', {
       prijs: (10 * quantity),
       VoorstellingID: Number(id),
-      Gebruikersnaam: "test5"
+      Gebruikersnaam: localStorage.getItem('username')
     });
   }
 

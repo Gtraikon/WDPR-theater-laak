@@ -20,9 +20,10 @@ public class VoorstellingController : ControllerBase
     }
 
     [HttpGet("GetVoorstellingen")]
-    public async Task<List<Voorstelling>> GetVoorstellingen()
+    public async Task<List<Tijdslot>> GetVoorstellingen()
     {
-        List<Voorstelling> voorstellingen = await _context.Voorstellingen.OrderBy(v => v.Titel).ToListAsync();
-        return voorstellingen;
+        //List<Tijdslot> tijdsloten = await _context.Tijdsloten.Where(t => !(t.voorstelling == null)).Include(t => t.voorstelling.ID && t.voorstelling.image && t.voorstelling.Titel).ToListAsync();
+        List<Tijdslot> tijdsloten = await _context.Tijdsloten.Where(t => !(t.voorstelling == null)).Include(t => t.voorstelling).ToListAsync();
+        return tijdsloten;
     }
 }

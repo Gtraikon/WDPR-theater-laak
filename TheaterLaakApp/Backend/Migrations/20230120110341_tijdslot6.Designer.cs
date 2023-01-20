@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    partial class TheaterIdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230120110341_tijdslot6")]
+    partial class tijdslot6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
@@ -151,17 +154,17 @@ namespace Backend.Migrations
                     b.Property<TimeOnly>("EindTijd")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ZaalNummer")
+                    b.Property<int?>("VoorstellingID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("voorstellingID")
+                    b.Property<int>("ZaalNummer")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ZaalNummer");
+                    b.HasIndex("VoorstellingID");
 
-                    b.HasIndex("voorstellingID");
+                    b.HasIndex("ZaalNummer");
 
                     b.ToTable("Tijdsloten");
                 });
@@ -374,19 +377,17 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Models.Tijdslot", b =>
                 {
+                    b.HasOne("Backend.Models.Voorstelling", null)
+                        .WithMany("tijdslot")
+                        .HasForeignKey("VoorstellingID");
+
                     b.HasOne("Backend.Models.Zaal", "Zaal")
                         .WithMany()
                         .HasForeignKey("ZaalNummer")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Backend.Models.Voorstelling", "voorstelling")
-                        .WithMany()
-                        .HasForeignKey("voorstellingID");
-
                     b.Navigation("Zaal");
-
-                    b.Navigation("voorstelling");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -438,6 +439,11 @@ namespace Backend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Backend.Models.Voorstelling", b =>
+                {
+                    b.Navigation("tijdslot");
                 });
 #pragma warning restore 612, 618
         }

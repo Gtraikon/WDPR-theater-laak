@@ -10,6 +10,7 @@ function Calendar() {
             .then(response => response.json())
             .then(data => {
                 setVoorstellingShows(data)
+                console.log(VoorstellingShows[0].beginTijd);
             })
     }
 
@@ -43,13 +44,13 @@ function Calendar() {
                 <div className="VoorstellingshowContainer">
                     {VoorstellingShows.map((voorstellingData) => {
                         return <>
-                            <a className='voorstellingLink' href={`/tickets/${voorstellingData.id}`}>
+                            <a className='voorstellingLink' href={`/voorstellingen/info/${voorstellingData.voorstelling.id}`}>
                                 <div className="Voorstellingshow">
                                     <div>
-                                        <img src="image.png" />
-                                        <h3>{voorstellingData.titel}</h3>
+                                        <img src={`${voorstellingData.voorstelling.image}`} />
+                                        <h3 style={{marginLeft: "20px"}}>{voorstellingData.voorstelling.titel}</h3>
                                         <ul>
-                                            <li key={voorstellingData.day}>{voorstellingData.day} at {voorstellingData.time}</li>
+                                            <li key={voorstellingData.id}>{voorstellingData.datum} om {voorstellingData.beginTijd}</li>
                                         </ul>
                                     </div>
                                 </div>
