@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    partial class TheaterIdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230118132920_voorstelling2")]
+    partial class voorstelling2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
@@ -154,14 +157,9 @@ namespace Backend.Migrations
                     b.Property<int>("ZaalNummer")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("voorstellingID")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("ID");
 
                     b.HasIndex("ZaalNummer");
-
-                    b.HasIndex("voorstellingID");
 
                     b.ToTable("Tijdsloten");
                 });
@@ -176,7 +174,11 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("image")
+                    b.Property<string>("day")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("time")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -380,13 +382,7 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Backend.Models.Voorstelling", "voorstelling")
-                        .WithMany()
-                        .HasForeignKey("voorstellingID");
-
                     b.Navigation("Zaal");
-
-                    b.Navigation("voorstelling");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

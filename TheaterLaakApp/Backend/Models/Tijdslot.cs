@@ -9,6 +9,8 @@ public class Tijdslot{
     public TimeOnly EindTijd {get; set;}
     public Zaal Zaal {get; set;}
 
+    public Voorstelling? voorstelling {get; set;}
+
     public Boolean Vrij(TheaterIdentityContext c){
         return !(c.Tijdsloten.Where(r => (this.Datum == r.Datum) 
             && (r.Zaal.ZaalNummer == this.Zaal.ZaalNummer)

@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    partial class TheaterIdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230120113838_tijdslot7")]
+    partial class tijdslot7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
@@ -381,7 +384,7 @@ namespace Backend.Migrations
                         .IsRequired();
 
                     b.HasOne("Backend.Models.Voorstelling", "voorstelling")
-                        .WithMany()
+                        .WithMany("tijdslot")
                         .HasForeignKey("voorstellingID");
 
                     b.Navigation("Zaal");
@@ -438,6 +441,11 @@ namespace Backend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Backend.Models.Voorstelling", b =>
+                {
+                    b.Navigation("tijdslot");
                 });
 #pragma warning restore 612, 618
         }

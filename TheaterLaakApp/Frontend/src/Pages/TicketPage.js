@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import { useParams } from "react-router";
+import axios from 'axios';
 
 function PurchaseForm() {
+  let { id } = useParams()
   const [quantity, setQuantity] = useState(1);
   const [confirmation, setConfirmation] = useState(null);
+
+  console.log(id);
 
   function handleChange(event) {
     setQuantity(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    // send request to purchase tickets
-    // const response = purchaseTickets(quantity);
-    // setConfirmation(response.confirmation);
+
+    await axios.post('https://localhost:7020/api/kaartjes/kopen', {
+      prijs: (10 * quantity),
+      VoorstellingID: Number(id),
+      Gebruikersnaam: localStorage.getItem('username')
+    });
   }
 
   return (

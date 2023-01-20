@@ -12,9 +12,9 @@ export default function Navbar() {
                     <li><a href="/doneren">Doneren</a></li>
                     <li><a href="/inloggen">Inloggen</a></li>
                     <li><a href="/registreren">registreren</a></li>
-                    <li><div class="dropdown">
-                        <button class="dropbtn">More</button>
-                        <div class="dropdown-content">
+                    <li><div className="dropdown">
+                        <button className="dropbtn">More</button>
+                        <div className="dropdown-content">
                             <a href="#">Over ons</a>
                             <a href="/contact">Contact</a>
                             <a href="/voorstellingen">Voorstellingen</a>
