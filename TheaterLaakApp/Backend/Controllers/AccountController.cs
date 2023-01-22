@@ -79,7 +79,7 @@ namespace Backend.Controllers
                         issuer: "https://localhost:7047",
                         audience: "https://localhost:7047",
                         claims: claims,
-                        expires: DateTime.Now.AddMinutes(10),
+                        expires: DateTime.Now.AddMinutes(30),
                         signingCredentials: signingCredentials
                     );
                     return Ok(new {success = true, token = new JwtSecurityTokenHandler().WriteToken(tokenOptions) });

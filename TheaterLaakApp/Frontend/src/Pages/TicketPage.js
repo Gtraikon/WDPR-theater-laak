@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import axios from 'axios';
 
-function PurchaseForm() {
-  let { id } = useParams()
+function PurchaseForm({ id, onChange }) {
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [confirmation, setConfirmation] = useState(null);
-
-  console.log(id);
+  const [fakepay, setFakepay] = useState('');
 
   function handleChange(event) {
     setQuantity(event.target.value);
@@ -16,16 +15,41 @@ function PurchaseForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    await axios.post('https://localhost:7020/api/kaartjes/kopen', {
-      prijs: (10 * quantity),
-      VoorstellingID: Number(id),
-      Gebruikersnaam: localStorage.getItem('username')
-    });
+    if (localStorage.getItem("token")) {
+      
+      try {
+        await axios.post('https://localhost:7020/api/kaartjes/kopen', {
+          prijs: (10 * quantity),
+          VoorstellingID: Number(id),
+          Gebruikersnaam: localStorage.getItem('username')
+        });
+
+        const fakepayData = {
+          amount: (10 * quantity),
+          url: `https://localhost:7020/api/doneer`
+        }
+        axios.post('https://fakepay.azurewebsites.net/', fakepayData, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+          .then(res => onChange(res.data))
+          
+          .catch(err => console.log(err));
+
+        setConfirmation("Kaartjes zijn gekocht");
+      } catch {
+        setConfirmation("Er is iets misgegaan bij het kopen van de kaartjes");
+      }
+    } else {
+      localStorage.setItem("redirect", `/voorstellinginfo/${id}`)
+      navigate("/inloggen");
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="ticket-quantity">Number of Tickets:</label>
+      <label htmlFor="ticket-quantity">Aantal kaartjes: </label>
       <input
         type="number"
         id="ticket-quantity"
@@ -35,7 +59,7 @@ function PurchaseForm() {
         value={quantity}
         onChange={handleChange}
       />
-      <button type="submit">Purchase Tickets</button>
+      <button type="submit">Koop kaartjes</button>
       {confirmation && <p>{confirmation}</p>}
     </form>
   );

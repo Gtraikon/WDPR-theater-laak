@@ -22,8 +22,24 @@ public class VoorstellingController : ControllerBase
     [HttpGet("GetVoorstellingen")]
     public async Task<List<Tijdslot>> GetVoorstellingen()
     {
-        //List<Tijdslot> tijdsloten = await _context.Tijdsloten.Where(t => !(t.voorstelling == null)).Include(t => t.voorstelling.ID && t.voorstelling.image && t.voorstelling.Titel).ToListAsync();
         List<Tijdslot> tijdsloten = await _context.Tijdsloten.Where(t => !(t.voorstelling == null)).Include(t => t.voorstelling).ToListAsync();
         return tijdsloten;
     }
+
+    [HttpGet("{id}")]
+        public async Task<ActionResult<Tijdslot>> GetVoorstelling(int id)
+        {
+          if (_context.Tijdsloten == null)
+          {
+              return NotFound();
+          }
+            var tijdslot = await _context.Tijdsloten.Include(t => t.voorstelling).Include(t => t.Zaal).SingleAsync(t => t.ID == id);
+
+            if (tijdslot == null)
+            {
+                return NotFound();
+            }
+
+            return tijdslot;
+        }
 }

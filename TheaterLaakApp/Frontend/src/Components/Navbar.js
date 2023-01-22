@@ -10,6 +10,10 @@ export default function Navbar() {
         window.location.reload();
     }
 
+    function inloggen(){
+        localStorage.setItem("redirect", window.location.pathname)
+    }
+
     return (
 
         <nav className="navbar">
@@ -21,11 +25,11 @@ export default function Navbar() {
                     <div className={`navbar-menu-bar ${isOpen ? 'open' : ''}`} />
                 </div>
                 <ul className={`navbar-nav ${isOpen ? 'open' : ''}`}>
-                    <li className="navbar-item"><a href="#" className="navbar-link">Programma</a></li>
+                    <li className="navbar-item"><a href="/voorstellingen" className="navbar-link">Voorstellingen</a></li>
                     <li className="navbar-item"><a href="/zalen" className="navbar-link">Zaalverhuur</a></li>
                     <li className="navbar-item"><a href="/doneren" className="navbar-link">Doneren</a></li>
                     <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
-                    {!token && <li className="navbar-item"><a href="/inloggen" className="navbar-link">Inloggen</a></li>}
+                    {!token && <li className="navbar-item"><a href="/inloggen" onClick={inloggen} className="navbar-link">Inloggen</a></li>}
                     {token && <li className="navbar-item"><a onClick={uitloggen} className="navbar-link">uitloggen</a></li>}
                 </ul>
             </div>

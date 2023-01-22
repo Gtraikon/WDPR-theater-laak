@@ -44,7 +44,7 @@ function Calendar() {
                 <div className="VoorstellingshowContainer">
                     {VoorstellingShows.map((voorstellingData) => {
                         return <>
-                            <a className='voorstellingLink' href={`/voorstellingen/info/${voorstellingData.voorstelling.id}`}>
+                            <a className='voorstellingLink' href={`/voorstellinginfo/${voorstellingData.id}`}>
                                 <div className="Voorstellingshow">
                                     <div>
                                         <img src={`${voorstellingData.voorstelling.image}`} />

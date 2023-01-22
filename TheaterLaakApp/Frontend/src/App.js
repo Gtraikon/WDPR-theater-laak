@@ -4,10 +4,6 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar';
 
 import HomePage from './Pages/HomePage';
-import TicketPage from './Pages/TicketPage';
-
-import Footer from './Components/Footer';
-
 import LoginPage from './Pages/LoginPage';
 import VoorstellingPage from './Pages/VoorstellingPage';
 import ZalenPage from './Pages/ZalenPage';
@@ -18,6 +14,9 @@ import GoedDoelPage from "./Pages/GoedDoelPage";
 import GoedDoelDoneerPage from "./Pages/GoedDoelDoneerPage";
 import RegistrerenPage from "./Pages/RegistrerenPage";
 import VoorstellingInfo from "./Pages/VoorstellingInfoPage";
+
+import Footer from './Components/Footer';
+
 
 function Zaal({ match }){
   return <h1>{match.params.zaalId}</h1>;
@@ -45,7 +44,6 @@ function App() {
           <Route exact path="/" element={<HomePage />} ></Route>
           <Route exact path="/zalen" element={<ZalenPage />} ></Route>
           <Route exact path="/inloggen" element={<LoginPage />} ></Route>
-          <Route exact path="/tickets/:id" element={<TicketPage />} ></Route>
           <Route exact path="/Voorstellingen" element={<VoorstellingPage />} ></Route>
           <Route exact path="/contact" element={<ContactPage />} ></Route>
           <Route exact path="/zaalreserveren" element={<ZaalReserverenPage />} ></Route>
@@ -53,7 +51,7 @@ function App() {
           <Route exact path="/donerengoeddoel" element={<GoedDoelPage />} ></Route>
           <Route exact path="/donerengoeddoel/doneren" element={<GoedDoelDoneerPage />} ></Route>
           <Route exact path="/registreren" element={<RegistrerenPage />} ></Route>
-          <Route exact path="/VoorstellingInfo" element={<VoorstellingInfo />} ></Route>
+          <Route exact path="/voorstellinginfo/:id" element={<VoorstellingInfo />} ></Route>
         </Routes>
       </div>
       <Footer />

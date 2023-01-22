@@ -467,3 +467,144 @@ padding: 10px 0;
   .doneerlink a:hover {
     color: #ccc;
   }
+
+  /*voorstellingenpagina*/
+  .filters {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .tile a{
+    text-decoration: none;
+    color: black;
+  }
+  .calender-header {
+    display: flex;
+  }
+  
+  .VoorstellingshowContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  
+  .voorstellingLink{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .Voorstellingshow div {
+    display: flex;
+    width: 75%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    
+    }
+    
+    .voorstellingLink {
+    text-decoration: none;
+    }
+    
+    .Voorstellingshow {
+    background-color: #C0BFBF;
+    }
+  
+  .title {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .voorstellingLink ul{
+      padding-left: 30px;
+    }
+
+    .voorstellingLink h3{
+      font-size: 14px;
+    }
+
+    .Voorstellingshow li{
+      font-size: 12px;
+    }
+    .Voorstellingshow div{
+      width: 90%;
+    }
+
+    .Voorstellingshow img{
+      width: 50%;
+    }
+
+    .filters{
+      display: block;
+      font-size: 12px;
+    }
+
+    .title{
+      font-size: 18px;
+    }
+  }
+
+  /*voorstelling individueel*/
+  .row{
+    width: 100%;
+    display: flex;
+  }
+
+  .col-3{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color:crimson;
+    margin: 0 15px;
+  }
+
+  .col-9{
+    width: 75%;
+  }
+
+  .col-9 img{
+    width: 100%;
+  }
+
+  .voorstellingInfo{
+    padding: 30px;
+  }
+
+  .infocontainer{
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .row{
+      display: block;
+    }
+
+    .col-3{
+      width: 100%;
+      margin: 0;
+    }
+
+    .voorstellingInfo{
+      padding: 0;
+      font-size: 14px;
+    }
+
+    .col-9{
+      width: 100%;
+    }
+
+    .voorstellingInfo h2{
+      font-size: 20px;
+    }
+  }
