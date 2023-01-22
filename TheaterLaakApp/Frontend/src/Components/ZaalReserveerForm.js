@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
-const ZaalHurenFormulier = () => {
+const ZaalHurenFormulier = ({ zaalnummer }) => {
+  const [messageStyle, setMessageStyle] = useState({ color: "red" });
+  const navigate = useNavigate();
   const username = localStorage.getItem("username");
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     datum: '',
     begintijd: '',
     eindtijd: '',
-    zaal: '',
   });
+
+  useEffect(() => {
+    if (message == "Uw Reservering is succesvol") {
+      setMessageStyle({ color: "green" })
+    }
+    else {
+      setMessageStyle({ color: "red" })
+    }
+  }, [message]);
 
   const handleChange = (event) => {
     setFormData({
@@ -21,29 +32,30 @@ const ZaalHurenFormulier = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    try {
-      const response = await axios.post('https://localhost:7020/api/reservering', {
-        Gebruikersnaam: username,
-        Zaalnummer: formData.zaal,
-        Jaar: formData.datum.split("-")[0],
-        Maand: formData.datum.split("-")[1],
-        Dag: formData.datum.split("-")[2],
-        BeginUur: formData.begintijd.split(":")[0],
-        BeginMinuut: formData.begintijd.split(":")[1],
-        EindUur: formData.eindtijd.split(":")[0],
-        EindMinuut: formData.eindtijd.split(":")[1]
-      });
-      /*if (response.data.success = true) {
-        navigate("/");
+    if (localStorage.getItem("token")) {
+      if (formData.datum && formData.begintijd && formData.eindtijd) {
+        await axios.post('https://localhost:7020/api/reservering', {
+          Gebruikersnaam: username,
+          Zaalnummer: zaalnummer,
+          Jaar: formData.datum.split("-")[0],
+          Maand: formData.datum.split("-")[1],
+          Dag: formData.datum.split("-")[2],
+          BeginUur: formData.begintijd.split(":")[0],
+          BeginMinuut: formData.begintijd.split(":")[1],
+          EindUur: formData.eindtijd.split(":")[0],
+          EindMinuut: formData.eindtijd.split(":")[1]
+        })
+          .then(response => { setMessage(response.data.message); })
       } else {
-        setError(response.data.error);
-      }*/
-    } catch (error) {
-      console.error(error);
-      setError("Het reserveren is niet gelukt");
-    }
+        setMessage("Voer aub alle velden in");
+        setMessageStyle({ color: "red" })
+      }
+    }else{
+      localStorage.setItem("redirect", `/zaalreserveren?ZaalNummer=${zaalnummer}`)
+      navigate("/inloggen");
+    } 
   };
+
 
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -80,18 +92,8 @@ const ZaalHurenFormulier = () => {
       />
       <br />
 
-      <label htmlFor="zaal" className="form-label">Welke zaal wil je huren:</label>
-      <input
-        type="number"
-        name="zaal"
-        id="zaal"
-        value={formData.grootte}
-        onChange={handleChange}
-        className="form-input"
-      />
-      <br />
-
       <button type="submit" className="form-button">Zaal huren</button>
+      <p style={messageStyle}>{message}</p>
     </form>
   );
 };

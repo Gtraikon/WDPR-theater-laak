@@ -1,52 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 function Calendar() {
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [VoorstellingShows, setVoorstellingShows] = useState([
-        {
-            name: 'The Cats',
-            schedule: [
-                { day: 'Monday', time: '16:00 PM' },
-                { day: 'Tuesday', time: '16:00 PM' },
-            ]
-        },
-        {
-            name: 'The Lion King',
-            schedule: [
-                { day: 'Wednesday', time: '16:00 PM' },
-                { day: 'Thursday', time: '16:00 PM' },
-            ]
-        },
-        {
-            name: 'Soldaat van Oranje',
-            schedule: [
-                { day: 'Wednesday', time: '16:00 PM' },
-                { day: 'Thursday', time: '16:00 PM' },
-            ]
-        }
-    ]);
+    const [VoorstellingShows, setVoorstellingShows] = useState([]);
+
+    async function getData() {
+        fetch("https://localhost:7020/api/Voorstelling/GetVoorstellingen")
+            .then(response => response.json())
+            .then(data => {
+                setVoorstellingShows(data)
+                console.log(VoorstellingShows[0].beginTijd);
+            })
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     function handleDateChange(date) {
         setSelectedDate(date);
-    }
-
-    function renderVoorstellingShow(VoorstellingShow) {
-        return (
-            <a className='voorstellingLink' href='/voorstelling'>
-            <div className="Voorstellingshow">
-                <div>
-                    <img src="image.png" />
-                    <h3>{VoorstellingShow.name}</h3>
-                    <ul>
-                        {VoorstellingShow.schedule.map(({ day, time }) => (
-                            <li key={day}>{day} at {time}</li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            </a>
-        );
     }
 
     return (
@@ -69,7 +42,21 @@ function Calendar() {
                 </div>
 
                 <div className="VoorstellingshowContainer">
-                    {VoorstellingShows.map(renderVoorstellingShow)}
+                    {VoorstellingShows.map((voorstellingData) => {
+                        return <>
+                            <a className='voorstellingLink' href={`/voorstellinginfo/${voorstellingData.id}`}>
+                                <div className="Voorstellingshow">
+                                    <div>
+                                        <img src={`${voorstellingData.voorstelling.image}`} />
+                                        <h3 style={{marginLeft: "20px"}}>{voorstellingData.voorstelling.titel}</h3>
+                                        <ul>
+                                            <li key={voorstellingData.id}>{voorstellingData.datum} om {voorstellingData.beginTijd}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        </>
+                    })}
                 </div>
             </div>
         </div>

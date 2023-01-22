@@ -1,30 +1,28 @@
-import React from 'react';
+import React from 'react';;
 
 function HomePage() {
+  
   return (
-    <body>
-    <h1>Uitgelichte voorstellingen</h1>
-    <div class="container">
+    
+    <div className='HomePage'>
       
-     <div class="feature">
+        <h1>Beleef het theater!</h1>
+    <div className="uitlichting-container">
+     <div class="uitlichting-feature">
       <img src="afbeeldingen/cats.png" alt="cats"/>
       <p>Cats</p>
     </div>
-
-    <div class="feature">
+    <div class="uitlichting-feature">
       <img src="afbeeldingen/lionking.png" alt="LK"/>
       <p>The lionking</p>
     </div>
-
-    <div class="feature">
+    <div class="uitlichting-feature">
       <img src="afbeeldingen/soldaat.png" alt="soldaat"/>
-      <p>Solaat van Oranje</p>
+      <p>Soldaat van Oranje</p>
     </div>
-      
-      
-      
+          
+      </div>
     </div>
-    </body>
   );
 }
 export default HomePage;

@@ -1,25 +1,39 @@
-export default function Navbar() {
-    return (
-        <header>
-            <nav>
-                
-                    <img src="/afbeeldingen/Logo.png" alt="Laak theater" href="http://localhost:3000"/>
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
-                <a href="#">Programma</a>
-                <a href="#">Tickets</a>  
-                <a href="/">Home</a>
-                <a href="/zalen">Zaalverhuur</a>
-                <a href="#">Donateurs</a>
-                <div class="dropdown">
-                        <button class="dropbtn">More</button>
-                        <div class="dropdown-content">
-                            <a href="#">Over ons</a>
-                            <a href="/contact">Contact</a>
-                            <a href="#">Voorstellingen</a>
-                        </div>
-                        </div>
-                
-            </nav>
-        </header>
+export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const token = localStorage.getItem("token");
+
+    function uitloggen(){
+        localStorage.removeItem("token");
+        window.location.reload();
+    }
+
+    function inloggen(){
+        localStorage.setItem("redirect", window.location.pathname)
+    }
+
+    return (
+
+        <nav className="navbar">
+            <div className="navbar-container">
+                <Link to="/"><img src="/afbeeldingen/Logo.png" alt="Laak theater" style={{ height: "60px" }} /></Link>
+                <div className="navbar-menu" onClick={() => setIsOpen(!isOpen)}>
+                    <div className={`navbar-menu-bar ${isOpen ? 'open' : ''}`} />
+                    <div className={`navbar-menu-bar ${isOpen ? 'open' : ''}`} />
+                    <div className={`navbar-menu-bar ${isOpen ? 'open' : ''}`} />
+                </div>
+                <ul className={`navbar-nav ${isOpen ? 'open' : ''}`}>
+                    <li className="navbar-item"><a href="/voorstellingen" className="navbar-link">Voorstellingen</a></li>
+                    <li className="navbar-item"><a href="/zalen" className="navbar-link">Zaalverhuur</a></li>
+                    <li className="navbar-item"><a href="/doneren" className="navbar-link">Doneren</a></li>
+                    <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
+                    {!token && <li className="navbar-item"><a href="/inloggen" onClick={inloggen} className="navbar-link">Inloggen</a></li>}
+                    {token && <li className="navbar-item"><a onClick={uitloggen} className="navbar-link">uitloggen</a></li>}
+                </ul>
+            </div>
+        </nav>
+
     )
 }
