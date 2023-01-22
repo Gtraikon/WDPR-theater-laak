@@ -1,3 +1,10 @@
+.center{
+  max-width: 1000px;
+  margin:auto;
+  justify-content: center;
+  text-align: center;
+}
+
 .filters {
   width: 75%;
   display: flex;
@@ -7,6 +14,10 @@
   text-align: center;
 }
 
+.tile a{
+  text-decoration: none;
+  color: black;
+}
 .calender-header {
   display: flex;
 }
@@ -52,6 +63,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0px;
+  margin: 0px;
   padding: 0;
 }
 .body{
@@ -77,17 +89,42 @@ margin-top: 20px;
   transform: scale(1.2);
 }
 /* Navbar*/
+.body{
+  margin: 20px;
+}
+h1{
+  text-align: center;
+}
+.container{
+  display: flex;
+background-color: #DFDFDF;
+margin-top: 20px;
+}
+.feature{
+  margin: 10px;
+  padding: 20px;
+  transition: transform.2s;
+}
+.feature img{
+  width: 75%;
+}
+.feature:hover{
+  transform: scale(1.2);
+}
+/* Navbar*/
+nav ul{
+  padding-inline-start: 20px;
+}
+
 header {
   background-color: #333;
   color: #fff;
   border: 0;
   
   text-align: center;
-  padding: 10px;
   
 }
 .dropbtn{
-  margin-top: 15px;
   background-color: black;
   color: #FFFFFF;
   padding:16px;
@@ -119,11 +156,12 @@ header {
   background-color: #A3A0A0;
   display: flex;
   justify-content: center;
-  width: max-content;
+  flex-wrap: wrap;
+  
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
+
   color: #333;
   text-decoration: none;
 }
@@ -134,11 +172,8 @@ header nav {
   display: flex;
 }
 
-
-
 header nav a {
   position: relative;
-  top: 20px;
   text-align: center;
   font-weight: bold;
   padding: 16px;
@@ -149,6 +184,10 @@ header nav a {
 
 header nav a:hover {
   color: #ccc;
+}
+
+nav li {
+  display: inline;
 }
 
 main {
@@ -329,11 +368,11 @@ section .info{
 }
 /* zalen*/
 .grid-container-h{
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto auto auto;
-  gap: 10px;
+  
   width: calc(100%-40px);
-  padding: 0 20px;
+  
   background-image: url("");
   background-color: antiquewhite;
   margin-bottom: 20px;
@@ -341,7 +380,7 @@ section .info{
 }
 .grid-container{
   
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto auto auto;
   gap: 10px;
   width: calc(100%-40px);
@@ -350,6 +389,7 @@ section .info{
   
   
 }
+
 .tile{
  
   width: 33.3333%;
@@ -363,18 +403,17 @@ section .info{
   
 }
 .smalltile{
-  width: 33.3333%;
-  min-height: 340px;
-  width: 50%;
-  min-width: 380px;
+  padding: 5px;
+    
   margin-bottom: 25px;
-  font-size: 30px;
+  font-size: 16px;
   text-align: center;
 }
 .tile-img{
   border: 1px solid black;
   background-color: antiquewhite;
   max-width: 394px;
+  
   
 }
 .tile-text{
@@ -395,11 +434,11 @@ section .info{
 }
 .smalltile h2{
   color:#D91C1C;
-  text-align: left;
+  text-align: center;
 }
 .smalltile p{
   color: black;
-  text-align: left;
+  text-align: center;
 }
 .tile input{
   border-radius: 10px;
@@ -475,3 +514,83 @@ section .info{
 .item3 ul li{
 padding: 10px 0;
 }
+
+.doneerbuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.doneerbuttons button{
+  display: block;
+  margin: 0 5px;
+  padding: 15px;
+}
+
+.theaterdoneerform button{
+  margin-top: 5px;;
+}
+
+.hoeveelheid-d{
+ margin-right: 15px; 
+}
+
+.tekst-d{
+  margin-right: 70.5px;  
+}
+
+.doneerlink{
+  text-decoration: none;
+  color: black;
+}
+
+.doneerlink a:hover {
+  color: #ccc;
+}
+
+.username{
+  margin-right: 15px; 
+ }
+ 
+ .password{
+   margin-right: 45px;  
+ }
+
+ .email{
+  margin-right: 48px;  
+}
+
+ .login button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 3px 134px;
+ }
+
+ .registreer button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 3px 118px;
+ }
+ 
+
+ /* responsive css*/
+
+ @media only screen and (max-width: 600px) {
+  /* styles for small screens */
+  nav ul {
+    display: none;
+     /* hide the navigation items */
+    flex-direction: column;
+  }
+  /* add a button to toggle the navigation items */
+  nav button {
+    display: block;
+    background-color: transparent;
+  }
+  /* show the navigation items when the button is clicked */
+  nav button:focus + ul {
+    display: block;
+  }
+}
+
