@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj": {}
+    "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj": {
+    "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
+        "projectUniqueName": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
         "projectName": "Backend.Tests",
-        "projectPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
+        "projectPath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
         "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\obj\\",
+        "outputPath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
-                "projectPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj"
+              "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
+                "projectPath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj"
               }
             }
           }
@@ -108,14 +108,14 @@
         }
       }
     },
-    "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
+    "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "projectUniqueName": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
+        "projectPath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\ttson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
+        "outputPath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

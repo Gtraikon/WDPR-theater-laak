@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename=".app">
       <Navbar />
       <div className='body'>
         <Routes>

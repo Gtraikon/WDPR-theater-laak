@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MCEijQiRRkOO0jscaSDirpJs3vhcHHJCyZbuNl4hpHdq9N2AiofdwdbeaZ7Btj0g5yN3tUvVLZWxGaEHDSSaPA==",
+  "dgSpecHash": "utXUtokyqJUw5vVrS3dAZSF1ODeJBWl6mVDWYFAlZYQbV7AkRywiVj4/MWTRExv+VJ4lqlGi53qJ5Y6T2URaRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
+  "projectFilePath": "c:\\Users\\ttson\\Documents\\GitHub\\WDPR-theater-laak\\TheaterLaakApp\\Backend.Tests\\Backend.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ttson\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ttson\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
