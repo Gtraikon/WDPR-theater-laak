@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TheaterIdentityContext>(options =>
@@ -38,6 +39,7 @@ builder.Services.AddAuthentication(opt =>
 });
 
 // Add services to the container.
+builder.Services.AddTransient<IIets, Iets>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
