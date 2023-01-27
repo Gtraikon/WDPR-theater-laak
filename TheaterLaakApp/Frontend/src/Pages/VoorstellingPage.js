@@ -6,11 +6,10 @@ function Calendar() {
     const [VoorstellingShows, setVoorstellingShows] = useState([]);
 
     async function getData() {
-        fetch("https://localhost:7020/api/Voorstelling/GetVoorstellingen")
+        fetch("https://theater-laak-wdpr.azurewebsites.net/api/Voorstelling/GetVoorstellingen")
             .then(response => response.json())
             .then(data => {
                 setVoorstellingShows(data)
-                console.log(VoorstellingShows[0].beginTijd);
             })
     }
 
@@ -41,13 +40,15 @@ function Calendar() {
                     </div>
                 </div>
 
+                {!VoorstellingShows && <p>Voorstellingen aan het laden...</p>}
+
                 <div className="VoorstellingshowContainer">
                     {VoorstellingShows.map((voorstellingData) => {
                         return <>
                             <a className='voorstellingLink' href={`/voorstellinginfo/${voorstellingData.id}`}>
                                 <div className="Voorstellingshow">
                                     <div>
-                                        <img src={`${voorstellingData.voorstelling.image}`} />
+                                        <img src={`${voorstellingData.voorstelling.image}`} alt={`${voorstellingData.voorstelling.titel}`}/>
                                         <h3 style={{marginLeft: "20px"}}>{voorstellingData.voorstelling.titel}</h3>
                                         <ul>
                                             <li key={voorstellingData.id}>{voorstellingData.datum} om {voorstellingData.beginTijd}</li>

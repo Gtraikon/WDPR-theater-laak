@@ -29,7 +29,7 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            return Redirect("http://localhost:3000/");
+            return Redirect("https://theater-laak-wdpr.netlify.app/betalengelukt");
         }
 
     }

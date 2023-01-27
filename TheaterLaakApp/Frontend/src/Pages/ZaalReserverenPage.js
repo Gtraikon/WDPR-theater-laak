@@ -14,7 +14,7 @@ function ZaalReserverenPage() {
         setZaalnummer(queryParam.get('ZaalNummer'));
 
 
-        axios.get(`https://localhost:7020/api/zalen/${zaalnummer}`)
+        axios.get(`https://theater-laak-wdpr.azurewebsites.net/api/zalen/${zaalnummer}`)
             .then(response => {
                 setData(response.data);
             })

@@ -20,7 +20,7 @@ function LoginPage() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://localhost:7020/api/account/login', {
+      const response = await axios.post('https://theater-laak-wdpr.azurewebsites.net/api/account/login', {
         UserName: username,
         Password: password
       });

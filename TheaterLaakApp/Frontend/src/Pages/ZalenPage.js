@@ -5,7 +5,7 @@ import axios from 'axios';
 function ZalenPage () {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("https://localhost:7020/api/zalen")
+    axios.get("https://theater-laak-wdpr.azurewebsites.net/api/zalen")
       .then(response => {
         setData(response.data);
       })

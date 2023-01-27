@@ -14,6 +14,8 @@ import GoedDoelPage from "./Pages/GoedDoelPage";
 import GoedDoelDoneerPage from "./Pages/GoedDoelDoneerPage";
 import RegistrerenPage from "./Pages/RegistrerenPage";
 import VoorstellingInfo from "./Pages/VoorstellingInfoPage";
+import BetalenGeluktPage from './Pages/BetalenGeluktPage';
+import NietGevondenPage from './Pages/NietGevondenPage';
 
 import Footer from './Components/Footer';
 
@@ -37,7 +39,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter basename=".app">
+    <BrowserRouter>
       <Navbar />
       <div className='body'>
         <Routes>
@@ -52,6 +54,8 @@ function App() {
           <Route exact path="/donerengoeddoel/doneren" element={<GoedDoelDoneerPage />} ></Route>
           <Route exact path="/registreren" element={<RegistrerenPage />} ></Route>
           <Route exact path="/voorstellinginfo/:id" element={<VoorstellingInfo />} ></Route>
+          <Route exact path="/betalengelukt" element={<BetalenGeluktPage />} ></Route>
+          <Route exact path="*" element={<NietGevondenPage />} ></Route>
         </Routes>
       </div>
       <Footer />

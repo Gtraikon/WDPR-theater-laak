@@ -14,7 +14,7 @@ function DonerenPage() {
 
   return (
     <>
-      <h1>Kies aan Wat u wilt doneren</h1>
+      <h1 style={{textAlign: "center"}}>Kies aan Wat u wilt doneren</h1>
       <div className='doneerbuttons'>
         <button onClick={naarTheaterDoneerPagina}>Doneren aan het theater</button>
         <button onClick={naarGoedDoelDoneerPagina}>Doneren aan een goed doel</button>

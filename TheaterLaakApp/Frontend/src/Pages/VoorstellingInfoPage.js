@@ -14,7 +14,7 @@ function VoorstellingInfoPage() {
     
 
     useEffect(() => {
-        axios.get(`https://localhost:7020/api/voorstelling/${id}`)
+        axios.get(`https://theater-laak-wdpr.azurewebsites.net/api/voorstelling/${id}`)
             .then(response => {
                 setData(response.data);
             })
@@ -30,7 +30,7 @@ function VoorstellingInfoPage() {
                 <div className='infocontainer'>
                     <div className='row'>
                         <div className='col-9'>
-                            <img src="../afbeeldingen/cats.png" alt="cats" />
+                            <img src={`../${data.voorstelling.image}`} alt={`${data.voorstelling.titel}`} />
                         </div>
                         <div className='col-3'>
                             <div className='voorstellingInfo'>

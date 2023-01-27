@@ -34,7 +34,7 @@ const ZaalHurenFormulier = ({ zaalnummer }) => {
     event.preventDefault();
     if (localStorage.getItem("token")) {
       if (formData.datum && formData.begintijd && formData.eindtijd) {
-        await axios.post('https://localhost:7020/api/reservering', {
+        await axios.post('https://theater-laak-wdpr.azurewebsites.net/api/reservering', {
           Gebruikersnaam: username,
           Zaalnummer: zaalnummer,
           Jaar: formData.datum.split("-")[0],
