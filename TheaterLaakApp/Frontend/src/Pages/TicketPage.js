@@ -18,15 +18,16 @@ function PurchaseForm({ id, onChange }) {
     if (localStorage.getItem("token")) {
       
       try {
-        await axios.post('https://theater-laak-wdpr.azurewebsites.net/api/kaartjes/kopen', {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/kaartjes/kopen`, {
+          Aantal: quantity,
           prijs: (10 * quantity),
-          VoorstellingID: Number(id),
+          TijdslotID: Number(id),
           Gebruikersnaam: localStorage.getItem('username')
         });
 
         const fakepayData = {
           amount: (10 * quantity),
-          url: `https://theater-laak-wdpr.azurewebsites.net/api/doneer`
+          url: `${process.env.REACT_APP_API_URL}/api/doneer`
         }
         axios.post('https://fakepay.azurewebsites.net/', fakepayData, {
           headers: {

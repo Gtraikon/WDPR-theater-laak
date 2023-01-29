@@ -714,3 +714,62 @@ section .info {
   justify-content: center;
   padding: 10px;
 }
+
+/*user tickets*/
+
+.ticketContainer{
+  max-width: 1000px;
+  margin:auto;
+}
+
+.ticketContainer h1{
+  text-align: center;
+}
+
+.userTickets{
+  width: 100%;
+  background-color: crimson;
+  display: flex;
+  margin: 30px 0;
+}
+
+.userTicketsList ul{
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 20px;
+  list-style-type: none;
+  float: right;
+  width: 240px;
+}
+
+.userTicketsList li{
+  padding: 5px 0;
+  margin-right: 20px;
+}
+
+.userTicketsList{
+  width: 60%;
+  display: flex;
+  float: right;
+}
+
+.userTickets img{
+  width: 40%;
+  height: auto;
+}
+
+@media only screen and (max-width: 700px) {
+  .userTicketsList ul{
+    font-size: 11px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 15px;
+    padding-right: 0;
+  }
+
+  .userTicketsList li{
+    padding: 0px;
+    margin-right: 20px;
+  }
+}

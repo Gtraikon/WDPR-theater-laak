@@ -6,7 +6,7 @@ function Calendar() {
     const [VoorstellingShows, setVoorstellingShows] = useState([]);
 
     async function getData() {
-        fetch("https://theater-laak-wdpr.azurewebsites.net/api/Voorstelling/GetVoorstellingen")
+        fetch(`${process.env.REACT_APP_API_URL}/api/Voorstelling/GetVoorstellingen`)
             .then(response => response.json())
             .then(data => {
                 setVoorstellingShows(data)
@@ -52,6 +52,7 @@ function Calendar() {
                                         <h3 style={{marginLeft: "20px"}}>{voorstellingData.voorstelling.titel}</h3>
                                         <ul>
                                             <li key={voorstellingData.id}>{voorstellingData.datum} om {voorstellingData.beginTijd}</li>
+                                            <li key={voorstellingData.id}>{voorstellingData.voorstelling.prijs} euro</li>
                                         </ul>
                                     </div>
                                 </div>

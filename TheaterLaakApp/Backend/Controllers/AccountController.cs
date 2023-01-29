@@ -46,7 +46,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [Route("registreer/medewerker")]
         public async Task<ActionResult> RegistreerMedewerker([FromBody] Gebruiker gebruiker)
         {

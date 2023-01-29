@@ -25,6 +25,6 @@ public class TheaterIdentityContext : IdentityDbContext<Gebruiker>
     public DbSet<Reservering> Reserveringen { get; set; }
     public DbSet<Tijdslot> Tijdsloten { get; set; }
     public DbSet<Zaal> Zalen { get; set; }
-    public DbSet<Kaartje> Kaartjes {get; set;}
+    public DbSet<Bestelling> Bestellingen {get; set;}
     public DbSet<Voorstelling> Voorstellingen {get; set;}
 }

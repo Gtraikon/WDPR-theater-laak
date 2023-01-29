@@ -16,6 +16,8 @@ import RegistrerenPage from "./Pages/RegistrerenPage";
 import VoorstellingInfo from "./Pages/VoorstellingInfoPage";
 import BetalenGeluktPage from './Pages/BetalenGeluktPage';
 import NietGevondenPage from './Pages/NietGevondenPage';
+import UserticketsPage from './Pages/UserTicketsPage';
+import AanwezigheidPage from './Pages/AanwezigheidPage';
 
 import Footer from './Components/Footer';
 
@@ -54,7 +56,9 @@ function App() {
           <Route exact path="/donerengoeddoel/doneren" element={<GoedDoelDoneerPage />} ></Route>
           <Route exact path="/registreren" element={<RegistrerenPage />} ></Route>
           <Route exact path="/voorstellinginfo/:id" element={<VoorstellingInfo />} ></Route>
+          <Route exact path="/tickets" element={<UserticketsPage />} ></Route>
           <Route exact path="/betalengelukt" element={<BetalenGeluktPage />} ></Route>
+          <Route exact path="/aanwezigheid" element={<AanwezigheidPage />} ></Route>
           <Route exact path="*" element={<NietGevondenPage />} ></Route>
         </Routes>
       </div>

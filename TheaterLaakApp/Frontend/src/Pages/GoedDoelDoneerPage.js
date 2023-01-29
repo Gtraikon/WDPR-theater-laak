@@ -36,7 +36,7 @@ function GoedDoelDoneerPage() {
     event.preventDefault();
     const fakepayData = {
       amount: hoeveelheid,
-      url: `https://theater-laak-wdpr.azurewebsites.net/api/doneer`
+      url: `${process.env.REACT_APP_API_URL}/api/doneer`
     }
     axios.post('https://fakepay.azurewebsites.net/', fakepayData, {
       headers: {
