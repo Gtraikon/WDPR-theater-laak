@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import jwt_decode from 'jwt-decode';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,8 @@ export default function Navbar() {
                     <li className="navbar-item"><a href="/zalen" className="navbar-link">Zaalverhuur</a></li>
                     <li className="navbar-item"><a href="/doneren" className="navbar-link">Doneren</a></li>
                     <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
+                    <li className="navbar-item"><a href="/tickets" className="navbar-link">Tickets</a></li>
+                    {CheckToegang() && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
                     {!token && <li className="navbar-item"><a href="/inloggen" onClick={inloggen} className="navbar-link">Inloggen</a></li>}
                     {token && <li className="navbar-item"><a onClick={uitloggen} className="navbar-link">uitloggen</a></li>}
                 </ul>
@@ -36,4 +39,22 @@ export default function Navbar() {
         </nav>
 
     )
+    
 }
+
+function CheckToegang() {
+    try {
+        let token = localStorage.getItem("token");
+        const decoded = jwt_decode(token);
+        const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        if (userRole != "Medewerker") {
+            return false;
+        }
+        return true;
+    } catch {
+        return false
+    }
+
+
+}
+

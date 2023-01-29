@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    [Migration("20230120125752_tijdslot8")]
-    partial class tijdslot8
+    [Migration("20230128192026_ticket6")]
+    partial class ticket6
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,13 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Aantal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Aanwezig")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("GebruikerId")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -105,14 +112,14 @@ namespace Backend.Migrations
                     b.Property<double>("Prijs")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("VoorstellingID")
+                    b.Property<int>("TijdslotID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
                     b.HasIndex("GebruikerId");
 
-                    b.HasIndex("VoorstellingID");
+                    b.HasIndex("TijdslotID");
 
                     b.ToTable("Kaartjes");
                 });
@@ -196,6 +203,23 @@ namespace Backend.Migrations
 
                     b.Property<int>("Capaciteit")
                         .HasColumnType("INTEGER");
+
+                    b.Property<int>("DerdeRangStoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Eersterangstoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TweedeRangStoelen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ZaalImage")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ZaalOmschrijving")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ZaalNummer");
 
@@ -345,15 +369,15 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Backend.Models.Voorstelling", "Voorstelling")
+                    b.HasOne("Backend.Models.Tijdslot", "Tijdslot")
                         .WithMany()
-                        .HasForeignKey("VoorstellingID")
+                        .HasForeignKey("TijdslotID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Gebruiker");
 
-                    b.Navigation("Voorstelling");
+                    b.Navigation("Tijdslot");
                 });
 
             modelBuilder.Entity("Backend.Models.Reservering", b =>

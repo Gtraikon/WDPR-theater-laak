@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class ticket3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,12 +52,31 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Voorstellingen",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Titel = table.Column<string>(type: "TEXT", nullable: false),
+                    image = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Voorstellingen", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Zalen",
                 columns: table => new
                 {
                     ZaalNummer = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Capaciteit = table.Column<int>(type: "INTEGER", nullable: false)
+                    Capaciteit = table.Column<int>(type: "INTEGER", nullable: false),
+                    Eersterangstoelen = table.Column<int>(type: "INTEGER", nullable: false),
+                    TweedeRangStoelen = table.Column<int>(type: "INTEGER", nullable: false),
+                    DerdeRangStoelen = table.Column<int>(type: "INTEGER", nullable: false),
+                    ZaalImage = table.Column<string>(type: "TEXT", nullable: false),
+                    ZaalOmschrijving = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,16 +198,49 @@ namespace Backend.Migrations
                     Datum = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     BeginTijd = table.Column<TimeOnly>(type: "TEXT", nullable: false),
                     EindTijd = table.Column<TimeOnly>(type: "TEXT", nullable: false),
-                    ZaalNummer = table.Column<int>(type: "INTEGER", nullable: false)
+                    ZaalNummer = table.Column<int>(type: "INTEGER", nullable: false),
+                    voorstellingID = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tijdsloten", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_Tijdsloten_Voorstellingen_voorstellingID",
+                        column: x => x.voorstellingID,
+                        principalTable: "Voorstellingen",
+                        principalColumn: "ID");
+                    table.ForeignKey(
                         name: "FK_Tijdsloten_Zalen_ZaalNummer",
                         column: x => x.ZaalNummer,
                         principalTable: "Zalen",
                         principalColumn: "ZaalNummer",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Kaartjes",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Prijs = table.Column<double>(type: "REAL", nullable: false),
+                    TijdslotID = table.Column<int>(type: "INTEGER", nullable: false),
+                    GebruikerId = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kaartjes", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Kaartjes_AspNetUsers_GebruikerId",
+                        column: x => x.GebruikerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Kaartjes_Tijdsloten_TijdslotID",
+                        column: x => x.TijdslotID,
+                        principalTable: "Tijdsloten",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -256,6 +308,16 @@ namespace Backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Kaartjes_GebruikerId",
+                table: "Kaartjes",
+                column: "GebruikerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Kaartjes_TijdslotID",
+                table: "Kaartjes",
+                column: "TijdslotID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reserveringen_GebruikerId",
                 table: "Reserveringen",
                 column: "GebruikerId");
@@ -264,6 +326,11 @@ namespace Backend.Migrations
                 name: "IX_Reserveringen_TijdslotID",
                 table: "Reserveringen",
                 column: "TijdslotID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tijdsloten_voorstellingID",
+                table: "Tijdsloten",
+                column: "voorstellingID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tijdsloten_ZaalNummer",
@@ -290,6 +357,9 @@ namespace Backend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Kaartjes");
+
+            migrationBuilder.DropTable(
                 name: "Reserveringen");
 
             migrationBuilder.DropTable(
@@ -300,6 +370,9 @@ namespace Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tijdsloten");
+
+            migrationBuilder.DropTable(
+                name: "Voorstellingen");
 
             migrationBuilder.DropTable(
                 name: "Zalen");

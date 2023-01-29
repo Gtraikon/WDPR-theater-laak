@@ -37,7 +37,7 @@ function RegistrerenPage() {
 
         if (email) {
             try {
-                const response = await axios.post('https://theater-laak-wdpr.azurewebsites.net/api/account/registreer', {
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/registreer`, {
                     Email: email,
                     UserName: username,
                     Password: password

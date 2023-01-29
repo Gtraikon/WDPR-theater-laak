@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(TheaterIdentityContext))]
-    [Migration("20230113120638_zaal")]
-    partial class zaal
+    [Migration("20230129123612_ticket8")]
+    partial class ticket8
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,21 +98,25 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Aantal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Aanwezig")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("GebruikerId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Prijs")
-                        .HasColumnType("REAL");
-
-                    b.Property<int>("VoorstellingID")
+                    b.Property<int>("TijdslotID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
                     b.HasIndex("GebruikerId");
 
-                    b.HasIndex("VoorstellingID");
+                    b.HasIndex("TijdslotID");
 
                     b.ToTable("Kaartjes");
                 });
@@ -157,9 +161,14 @@ namespace Backend.Migrations
                     b.Property<int>("ZaalNummer")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("voorstellingID")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ID");
 
                     b.HasIndex("ZaalNummer");
+
+                    b.HasIndex("voorstellingID");
 
                     b.ToTable("Tijdsloten");
                 });
@@ -170,7 +179,14 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Prijs")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("Titel")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("image")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -353,15 +369,15 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Backend.Models.Voorstelling", "Voorstelling")
+                    b.HasOne("Backend.Models.Tijdslot", "Tijdslot")
                         .WithMany()
-                        .HasForeignKey("VoorstellingID")
+                        .HasForeignKey("TijdslotID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Gebruiker");
 
-                    b.Navigation("Voorstelling");
+                    b.Navigation("Tijdslot");
                 });
 
             modelBuilder.Entity("Backend.Models.Reservering", b =>
@@ -391,7 +407,13 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Backend.Models.Voorstelling", "voorstelling")
+                        .WithMany()
+                        .HasForeignKey("voorstellingID");
+
                     b.Navigation("Zaal");
+
+                    b.Navigation("voorstelling");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

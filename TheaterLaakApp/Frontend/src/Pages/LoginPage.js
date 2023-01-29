@@ -1,12 +1,18 @@
 import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function LoginPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const onCaptchaChange = value => {
+    console.log(value);
+  };
+
 
   function handleEmailChange(event) {
     setUsername(event.target.value);
@@ -20,22 +26,22 @@ function LoginPage() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://theater-laak-wdpr.azurewebsites.net/api/account/login', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/login`, {
         UserName: username,
         Password: password
       });
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        localStorage.setItem("username", username);
-        const url = localStorage.getItem("redirect");
-        if(url){
-          navigate(url);
-          window.location.reload();
-          localStorage.setItem("redirect", "/")
-        }else{
-          navigate("/");
-          window.location.reload();
-        }
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      const url = localStorage.getItem("redirect");
+      if (url) {
+        navigate(url);
+        window.location.reload();
+        localStorage.setItem("redirect", "/")
+      } else {
+        navigate("/");
+        window.location.reload();
+      }
     } catch (error) {
       console.error(error);
       setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
@@ -57,6 +63,12 @@ function LoginPage() {
         </label>
         <br />
         <button type="submit">Log In</button>
+        <ReCAPTCHA
+          sitekey="6LeGtTAkAAAAAHJ949eS6pSZKI6JUbbwbpMCzWwM"
+          onChange={onCaptchaChange}
+        />
+        {//API-Key 6LeGtTAkAAAAANCAywupUd5IZ3bpK4Pgxedv2RkP
+        }
         {error && <p className="error" style={{ color: "red" }}>{error}</p>}
       </form>
       <Link to="/registreren">Registreer als een nieuwe gebruiker</Link>

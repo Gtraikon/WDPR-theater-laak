@@ -5,25 +5,25 @@
 namespace Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _14 : Migration
+    public partial class ticket5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "image",
-                table: "Voorstellingen",
-                type: "TEXT",
+            migrationBuilder.AddColumn<int>(
+                name: "Aantal",
+                table: "Kaartjes",
+                type: "INTEGER",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "image",
-                table: "Voorstellingen");
+                name: "Aantal",
+                table: "Kaartjes");
         }
     }
 }

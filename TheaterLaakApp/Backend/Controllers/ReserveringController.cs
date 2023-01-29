@@ -32,26 +32,32 @@ namespace Backend.Controllers
         [Authorize]
         public async Task<Response> PostReservering(ReserveringObj reserveringObj)
         {
-            Gebruiker gebruiker = await _userManager.FindByNameAsync(reserveringObj.Gebruikersnaam);
-            Zaal zaal = await _context.Zalen.FindAsync(reserveringObj.ZaalNummer);
-            DateOnly datum = new DateOnly(reserveringObj.Jaar, reserveringObj.Maand, reserveringObj.Dag);
-            TimeOnly beginTijd = new TimeOnly(reserveringObj.BeginUur, reserveringObj.BeginMinuut);
-            TimeOnly eindTijd = new TimeOnly(reserveringObj.EindUur, reserveringObj.EindMinuut);
-            Tijdslot tijdslot = new Tijdslot{Datum=datum, BeginTijd=beginTijd, EindTijd=eindTijd, Zaal=zaal};
-            Reservering reservering = new Reservering{Tijdslot=tijdslot, Gebruiker=gebruiker};
-
-            if (!tijdslot.Vrij(_context))
+            if (User.Identity.IsAuthenticated)
             {
-                return new Response() { code = 400, message = "Het tijdslot is niet vrij" };
-            }
-            if(!tijdslot.BinnenOpeningstijden()){
-                return new Response() { code = 400, message = "Dit tijdslot valt buiten de openingstijden" };
-            }
+                Gebruiker gebruiker = await _userManager.FindByNameAsync(reserveringObj.Gebruikersnaam);
+                Zaal zaal = await _context.Zalen.FindAsync(reserveringObj.ZaalNummer);
+                DateOnly datum = new DateOnly(reserveringObj.Jaar, reserveringObj.Maand, reserveringObj.Dag);
+                TimeOnly beginTijd = new TimeOnly(reserveringObj.BeginUur, reserveringObj.BeginMinuut);
+                TimeOnly eindTijd = new TimeOnly(reserveringObj.EindUur, reserveringObj.EindMinuut);
+                Tijdslot tijdslot = new Tijdslot { Datum = datum, BeginTijd = beginTijd, EindTijd = eindTijd, Zaal = zaal };
+                Reservering reservering = new Reservering { Tijdslot = tijdslot, Gebruiker = gebruiker };
 
-            _context.Reserveringen.Add(reservering);
-            await _context.SaveChangesAsync();
+                if (!tijdslot.Vrij(_context))
+                {
+                    return new Response() { code = 400, message = "Het tijdslot is niet vrij" };
+                }
+                if (!tijdslot.BinnenOpeningstijden())
+                {
+                    return new Response() { code = 400, message = "Dit tijdslot valt buiten de openingstijden" };
+                }
 
-            return new Response() { code = 200, message = "Uw Reservering is succesvol" };
+                _context.Reserveringen.Add(reservering);
+                await _context.SaveChangesAsync();
+
+                return new Response() { code = 200, message = "Uw Reservering is succesvol" };
+            }else{
+                return new Response() { code = 401, message = "U moet opnieuw inloggen"};
+            }
         }
 
         // GET: api/Reservering

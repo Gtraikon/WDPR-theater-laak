@@ -5,8 +5,9 @@ public class Voorstelling
 
     public int ID { get; set; } 
 
-    public string Titel { get; set; } //
-    // public string day {get;set;}
-    // public string time {get;set;}
-    public string image {get; set;} // beschrijving + tickets
+    public string Titel { get; set; } 
+
+    public string image {get; set;}
+
+    public double Prijs {get; set;}
 }

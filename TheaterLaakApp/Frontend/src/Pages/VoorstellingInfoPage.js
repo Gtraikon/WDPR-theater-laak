@@ -14,7 +14,8 @@ function VoorstellingInfoPage() {
     
 
     useEffect(() => {
-        axios.get(`https://theater-laak-wdpr.azurewebsites.net/api/voorstelling/${id}`)
+        console.log(`${process.env.REACT_APP_API_URL}/api/voorstelling/${id}`);
+        axios.get(`${process.env.REACT_APP_API_URL}/api/voorstelling/${id}`)
             .then(response => {
                 setData(response.data);
             })
@@ -38,7 +39,7 @@ function VoorstellingInfoPage() {
                                 <p>{data.datum}</p>
                                 <p>{data.beginTijd} - {data.eindTijd}</p>
                                 <p>Zaal {data.zaal.zaalNummer}</p>
-                                <p>Prijs: 10 euro</p>
+                                <p>Prijs: {data.voorstelling.prijs} euro</p>
                             </div>
                         </div>
                     </div>
@@ -49,7 +50,7 @@ function VoorstellingInfoPage() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
-                    <Ticketpage id = {data.voorstelling.id} onChange={handleFakepay}/>
+                    <Ticketpage id = {data.id} onChange={handleFakepay}/>
                 </div>
             }
         </>
