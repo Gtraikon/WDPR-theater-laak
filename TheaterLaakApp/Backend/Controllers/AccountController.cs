@@ -46,13 +46,24 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("registreer/medewerker")]
         public async Task<ActionResult> RegistreerMedewerker([FromBody] Gebruiker gebruiker)
         {
             await _roleManager.CreateAsync(new IdentityRole{Name = "Medewerker"}); 
             var resultaat = await _userManager.CreateAsync(gebruiker, gebruiker.Password);
             await _userManager.AddToRoleAsync(gebruiker, "Medewerker");
+            return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("registreer/admin")]
+        public async Task<ActionResult> RegistreerAdmin([FromBody] Gebruiker gebruiker)
+        {
+            await _roleManager.CreateAsync(new IdentityRole{Name = "Admin"}); 
+            var resultaat = await _userManager.CreateAsync(gebruiker, gebruiker.Password);
+            await _userManager.AddToRoleAsync(gebruiker, "Admin");
             return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
         }
 
