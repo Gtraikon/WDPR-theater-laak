@@ -8,9 +8,11 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [captcha, setCaptcha] = useState('');
 
   const onCaptchaChange = value => {
     console.log(value);
+    setCaptcha(value);
   };
 
 
@@ -28,8 +30,10 @@ function LoginPage() {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/login`, {
         UserName: username,
-        Password: password
+        Password: password,
+        Captcha: captcha
       });
+
       const token = response.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("username", username);
@@ -43,8 +47,7 @@ function LoginPage() {
         window.location.reload();
       }
     } catch (error) {
-      console.error(error);
-      setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
+      setError(error.response.data.error);
     }
   }
 
@@ -67,8 +70,6 @@ function LoginPage() {
           sitekey="6LeGtTAkAAAAAHJ949eS6pSZKI6JUbbwbpMCzWwM"
           onChange={onCaptchaChange}
         />
-        {//API-Key 6LeGtTAkAAAAANCAywupUd5IZ3bpK4Pgxedv2RkP
-        }
         {error && <p className="error" style={{ color: "red" }}>{error}</p>}
       </form>
       <Link to="/registreren">Registreer als een nieuwe gebruiker</Link>

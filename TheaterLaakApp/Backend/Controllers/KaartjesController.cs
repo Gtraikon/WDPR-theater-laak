@@ -32,6 +32,12 @@ public class KaartjesController : ControllerBase
             Gebruiker gebruiker = await _userManager.FindByNameAsync(koopObj.Gebruikersnaam);
             Tijdslot tijdslot = await _context.Tijdsloten.FindAsync(koopObj.TijdslotID);
 
+            int tijdslotAantal = _context.Bestellingen.Where(b => b.Gebruiker == gebruiker && b.Tijdslot == tijdslot).Select(b => b.Aantal).Sum();
+
+            if((koopObj.Aantal + tijdslotAantal) > 25){
+                return new Response() { code = 400, message = "U kunt maximaal 25 tickets kopen" };
+            }
+
             await _context.Bestellingen.AddAsync(new Bestelling() { ID = (bestellingen.Length + 1), Tijdslot = tijdslot, Gebruiker = gebruiker, Aantal=koopObj.Aantal});
             await _context.SaveChangesAsync();
             return new Response() { code = 201, message = "Het Betalen is gelukt" };
