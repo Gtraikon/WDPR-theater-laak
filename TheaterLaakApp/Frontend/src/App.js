@@ -18,6 +18,10 @@ import BetalenGeluktPage from './Pages/BetalenGeluktPage';
 import NietGevondenPage from './Pages/NietGevondenPage';
 import UserticketsPage from './Pages/UserTicketsPage';
 import AanwezigheidPage from './Pages/AanwezigheidPage';
+import AdminPage from './Pages/AdminPage';
+import ZaalToevoegenPage from './Pages/ZaalToevoegenPage';
+import TijdslotenToevoegenPage from './Pages/TijdslotenToevoegenPage';
+import VoorstellingenToevoegenPage from './Pages/VoorstellingToevoegenPage';
 
 import Footer from './Components/Footer';
 
@@ -59,7 +63,11 @@ function App() {
           <Route exact path="/tickets" element={<UserticketsPage />} ></Route>
           <Route exact path="/betalengelukt" element={<BetalenGeluktPage />} ></Route>
           <Route exact path="/aanwezigheid" element={<AanwezigheidPage />} ></Route>
+          <Route exact path="/admin" element={<AdminPage/>} ></Route>
           <Route exact path="*" element={<NietGevondenPage />} ></Route>
+          <Route exact path="/AddZaal" element={<ZaalToevoegenPage />} ></Route>
+          <Route exact path="/AddTijdsloten" element={<TijdslotenToevoegenPage />} ></Route>
+          <Route exact path="/AddVoorstelling" element={<VoorstellingenToevoegenPage />} ></Route>
         </Routes>
       </div>
       <Footer />
