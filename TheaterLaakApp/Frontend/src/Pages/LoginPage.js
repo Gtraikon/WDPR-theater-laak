@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
+import jwt_decode from 'jwt-decode';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ function LoginPage() {
       const token = response.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("username", username);
+      setToegang()
       const url = localStorage.getItem("redirect");
+      
       if (url) {
         navigate(url);
         window.location.reload();
@@ -43,7 +46,7 @@ function LoginPage() {
         window.location.reload();
       }
     } catch (error) {
-      console.error(error);
+;      console.error(error);
       setError("U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
     }
   }
@@ -77,3 +80,19 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+function setToegang() {
+  try {
+      let token = localStorage.getItem("token");
+      const decoded = jwt_decode(token);
+      const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+      if (userRole != "Medewerker" && userRole != "Admin") {
+          localStorage.setItem("toegang", false);
+      }
+      localStorage.setItem("toegang", true);
+  } catch {
+    localStorage.setItem("toegang", false);
+  }
+
+
+}
