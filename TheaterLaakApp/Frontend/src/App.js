@@ -24,6 +24,7 @@ import TijdslotenToevoegenPage from './Pages/TijdslotenToevoegenPage';
 import VoorstellingenToevoegenPage from './Pages/VoorstellingToevoegenPage';
 
 import Footer from './Components/Footer';
+import UserReserveringPage from './Pages/UserReserveringenPage';
 
 
 function Zaal({ match }){
@@ -50,6 +51,7 @@ function App() {
       <div className='body'>
         <Routes>
           <Route exact path="/" element={<HomePage />} ></Route>
+          <Route exact path="/Reserveringen" element={<UserReserveringPage/>}></Route>
           <Route exact path="/zalen" element={<ZalenPage />} ></Route>
           <Route exact path="/inloggen" element={<LoginPage />} ></Route>
           <Route exact path="/Voorstellingen" element={<VoorstellingPage />} ></Route>
