@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Models;
+using Backend.ModelsObj;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
@@ -83,16 +84,12 @@ namespace Backend.Controllers
 
         [Authorize(Roles = "Admin, Medewerker")]
         [HttpPost]
-        public async Task<ActionResult<Zaal>> PostZaal(Zaal zaal)
+        public async Task<ActionResult<Response>> PostZaal(Zaal zaal)
         {
-          if (_context.Zalen == null)
-          {
-              return Problem("Entity set 'TheaterIdentityContext.Zalen'  is null.");
-          }
             _context.Zalen.Add(zaal);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetZaal", new { id = zaal.ZaalNummer }, zaal);
+            return new Response{ code = 201, message = "Zaal is toegevoegd" };
         }
 
         [Authorize(Roles = "Admin, Medewerker")]
