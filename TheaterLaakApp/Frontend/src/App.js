@@ -25,6 +25,7 @@ import VoorstellingenToevoegenPage from './Pages/VoorstellingToevoegenPage';
 import TijdslotToevoegenPage from './Pages/TijdslotToevoegenPage';
 
 import Footer from './Components/Footer';
+import UserReserveringPage from './Pages/UserReserveringenPage';
 
 
 
@@ -52,6 +53,7 @@ function App() {
       <div className='body'>
         <Routes>
           <Route exact path="/" element={<HomePage />} ></Route>
+          <Route exact path="/Reserveringen" element={<UserReserveringPage/>}></Route>
           <Route exact path="/zalen" element={<ZalenPage />} ></Route>
           <Route exact path="/inloggen" element={<LoginPage />} ></Route>
           <Route exact path="/Voorstellingen" element={<VoorstellingPage />} ></Route>

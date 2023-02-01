@@ -61,35 +61,19 @@ namespace Backend.Controllers
         }
 
         // GET: api/Reservering
-        [Authorize(Roles = "Admin, Medewerker")]
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Reservering>>> GetReserveringen()
+         [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<IEnumerable<Reservering>>> Get(string username)
         {
-            if (_context.Reserveringen == null)
-            {
-                return NotFound();
+            if(User.Identity.IsAuthenticated){
+                return await _context.Reserveringen.Where(k => k.Gebruiker.UserName == username).Include(k => k.Tijdslot.Zaal).ToListAsync();
             }
-            return await _context.Reserveringen.ToListAsync();
+            else{
+                return Unauthorized();
+            }
         }
 
-        // GET: api/Reservering/5
-        [Authorize(Roles = "Admin, Medewerker")]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Reservering>> GetReservering(int id)
-        {
-            if (_context.Reserveringen == null)
-            {
-                return NotFound();
-            }
-            var reservering = await _context.Reserveringen.FindAsync(id);
-
-            if (reservering == null)
-            {
-                return NotFound();
-            }
-
-            return reservering;
-        }
 
         // PUT: api/Reservering/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

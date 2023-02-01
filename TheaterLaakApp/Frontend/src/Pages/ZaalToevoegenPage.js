@@ -3,18 +3,11 @@ import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AddZaal from './../Components/AddZaal';
+import GeenToegang from "../Components/GeenToegang";
 
 function ZaalToevoegenPage(){
-    localStorage.getItem("toegang")
-    const navigate = useNavigate();
-    if (!localStorage.getItem("toegang")) { 
-        return ( 
-                        <div className="betalenGelukt">
-                <h2>U Heeft geen toegang tot deze pagina</h2>
-                <button onClick={home}>Terug naar de homepage</button>
-            </div>
-        )
-    }
+        const navigate = useNavigate();
+    if (!localStorage.getItem("toegang")) {<GeenToegang/>}
     return(
         <>
     <h1>zaal toevoegen</h1>

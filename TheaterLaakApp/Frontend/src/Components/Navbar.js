@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+   
     const token = localStorage.getItem("token");
     const [toegang, setToegang] = useState(localStorage.getItem("toegang"));
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Navbar() {
 
     function inloggen() {
         localStorage.setItem("redirect", window.location.pathname)
+        
     }
 
     function doneren() {
@@ -43,7 +45,8 @@ export default function Navbar() {
                     <li className="navbar-item"><a href="/zalen" className="navbar-link">Zaalverhuur</a></li>
                     <li className="navbar-item"><a onClick={doneren} className="navbar-link">Doneren</a></li>
                     <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
-                    <li className="navbar-item"><a href="/tickets" className="navbar-link">Tickets</a></li>
+                    {token && <li className="navbar-item"><a href="/tickets" className="navbar-link">Tickets</a></li>}
+                    {CheckToegang() && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
                     {toegang && <li className="navbar-item"><a href="/admin" className="navbar-link">Admin</a></li>}
                     {toegang && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
                     {!token && <li className="navbar-item"><a href="/inloggen" onClick={inloggen} className="navbar-link">Inloggen</a></li>}
@@ -55,5 +58,8 @@ export default function Navbar() {
     )
 
 }
+
+
+
 
 

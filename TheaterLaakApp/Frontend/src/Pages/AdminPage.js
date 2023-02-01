@@ -11,6 +11,7 @@ function AdminPage() {
             <h2>Adminportaal</h2>
             <Link to="/AddVoorstelling"><button>Voorstelling toevoegen</button></Link>
             <Link to="/AddTijdsloten"><button>Tijdslot toevoegen</button></Link>
+            <Link to="/AddZaal"><button>Zalen toevoegen</button></Link>
         </div>
     )
 }
