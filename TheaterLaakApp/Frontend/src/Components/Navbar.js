@@ -1,19 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import jwt_decode from 'jwt-decode';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-    function uitloggen(){
+    function uitloggen() {
         localStorage.removeItem("token");
         localStorage.setItem("toegang", false)
         window.location.reload();
     }
 
-    function inloggen(){
+    function inloggen() {
         localStorage.setItem("redirect", window.location.pathname)
+    }
+
+    function doneren() {
+        if (token) {
+            const tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhODkyMTZjOC04NGUyLTQyZmYtYTlkYi1lNmU1NDU1ODdhZjMiLCJqdGkiOiJmOGIwZWJlYS1jYjY4LTQ1NjUtYjJjZS1iNWVmMWE1ZjkxNzAiLCJpYXQiOiIwMS8xMi8yMDIzIDE4OjEzOjQxIiwiVXNlcklkIjoiYTg5MjE2YzgtODRlMi00MmZmLWE5ZGItZTZlNTQ1NTg3YWYzIiwiRW1haWwiOiJ0YXJ1bmd1bHJhakBnbWFpbC5jb20iLCJleHAiOjE5ODkxNjY0MjEsImlzcyI6IklrRG9uZWVyIiwiYXVkIjoiKiJ9.SNQfzdzhoeMd3kMvMHSu9wtRn5eR6q5TXzOcVczLBDk";
+            window.location.assign(`https://ikdoneer.azurewebsites.net/Toegang?url=${process.env.REACT_APP_API_URL}/api/doneer/toegang?token=${tokenStr}`);
+        } else {
+            navigate("/inloggen");
+        }
     }
 
     return (
@@ -29,7 +39,7 @@ export default function Navbar() {
                 <ul className={`navbar-nav ${isOpen ? 'open' : ''}`}>
                     <li className="navbar-item"><a href="/voorstellingen" className="navbar-link">Voorstellingen</a></li>
                     <li className="navbar-item"><a href="/zalen" className="navbar-link">Zaalverhuur</a></li>
-                    <li className="navbar-item"><a href="/doneren" className="navbar-link">Doneren</a></li>
+                    <li className="navbar-item"><a onClick={doneren} className="navbar-link">Doneren</a></li>
                     <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
                     <li className="navbar-item"><a href="/tickets" className="navbar-link">Tickets</a></li>
                     {CheckToegang() && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
@@ -40,7 +50,7 @@ export default function Navbar() {
         </nav>
 
     )
-    
+
 }
 
 function CheckToegang() {

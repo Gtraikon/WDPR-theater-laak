@@ -29,8 +29,16 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            return Redirect("https://theater-laak-wdpr.netlify.app/betalengelukt");
+            // return Redirect("https://theater-laak-wdpr.netlify.app/betalengelukt");
+            return Redirect("http://localhost:3000/betalengelukt");
         }
 
+        [HttpPost]
+        [Route("toegang")]
+        public async Task<IActionResult> Doneren(string token)
+        {
+            // return Redirect("https://theater-laak-wdpr.netlify.app/doneren?token=" + token);
+            return Redirect("http://localhost:3000/doneren?token=" + token);
+        }
     }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router";
 import axios from 'axios';
 
-function PurchaseForm({ id, onChange }) {
+function PurchaseForm({ id, prijs,  onChange }) {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [confirmation, setConfirmation] = useState(null);
@@ -18,15 +18,18 @@ function PurchaseForm({ id, onChange }) {
     if (localStorage.getItem("token")) {
       
       try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/api/kaartjes/kopen`, {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/kaartjes/kopen`, {
           Aantal: quantity,
-          prijs: (10 * quantity),
           TijdslotID: Number(id),
           Gebruikersnaam: localStorage.getItem('username')
         });
 
+        setConfirmation(response.data.message);
+
+        if(response.data.code == 201){
+
         const fakepayData = {
-          amount: (10 * quantity),
+          amount: (prijs * quantity),
           url: `${process.env.REACT_APP_API_URL}/api/doneer`
         }
         axios.post('https://fakepay.azurewebsites.net/', fakepayData, {
@@ -37,8 +40,7 @@ function PurchaseForm({ id, onChange }) {
           .then(res => onChange(res.data))
           
           .catch(err => console.log(err));
-
-        setConfirmation("Kaartjes zijn gekocht");
+      }
       } catch {
         setConfirmation("Er is iets misgegaan bij het kopen van de kaartjes");
       }
@@ -56,7 +58,6 @@ function PurchaseForm({ id, onChange }) {
         id="ticket-quantity"
         name="quantity"
         min="1"
-        max="10"
         value={quantity}
         onChange={handleChange}
       />

@@ -8,6 +8,7 @@ namespace Backend.ModelsObj
     public string? UserName { get; init; }
 
     [Required(ErrorMessage = "Wachtwoord is nodig")]
-    public string? Password { get; init; }
+    public string? Password { get; init; }public string? Captcha { get; init; }
+
     }
 }

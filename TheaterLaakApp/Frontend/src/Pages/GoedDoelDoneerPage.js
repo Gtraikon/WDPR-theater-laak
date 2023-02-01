@@ -13,8 +13,7 @@ function GoedDoelDoneerPage() {
   const navigate = useNavigate();
   const [goeddoel, setGoeddoel] = useState('');
   const [fakepay, setFakepay] = useState('');
-  const tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhODkyMTZjOC04NGUyLTQyZmYtYTlkYi1lNmU1NDU1ODdhZjMiLCJqdGkiOiJmOGIwZWJlYS1jYjY4LTQ1NjUtYjJjZS1iNWVmMWE1ZjkxNzAiLCJpYXQiOiIwMS8xMi8yMDIzIDE4OjEzOjQxIiwiVXNlcklkIjoiYTg5MjE2YzgtODRlMi00MmZmLWE5ZGItZTZlNTQ1NTg3YWYzIiwiRW1haWwiOiJ0YXJ1bmd1bHJhakBnbWFpbC5jb20iLCJleHAiOjE5ODkxNjY0MjEsImlzcyI6IklrRG9uZWVyIiwiYXVkIjoiKiJ9.SNQfzdzhoeMd3kMvMHSu9wtRn5eR6q5TXzOcVczLBDk";
-
+  const tokenStr = localStorage.getItem("doneer");
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
