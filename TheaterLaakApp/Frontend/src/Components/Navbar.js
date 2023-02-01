@@ -5,11 +5,13 @@ import jwt_decode from 'jwt-decode';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const token = localStorage.getItem("token");
+    const [toegang, setToegang] = useState(localStorage.getItem("toegang"));
     const navigate = useNavigate();
 
     function uitloggen() {
         localStorage.removeItem("token");
-        localStorage.setItem("toegang", false)
+        localStorage.removeItem("toegang")
+        setToegang(localStorage.getItem("toegang"));
         window.location.reload();
     }
 
@@ -42,7 +44,8 @@ export default function Navbar() {
                     <li className="navbar-item"><a onClick={doneren} className="navbar-link">Doneren</a></li>
                     <li className="navbar-item"><a href="/contact" className="navbar-link">Contact</a></li>
                     <li className="navbar-item"><a href="/tickets" className="navbar-link">Tickets</a></li>
-                    {CheckToegang() && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
+                    {toegang && <li className="navbar-item"><a href="/admin" className="navbar-link">Admin</a></li>}
+                    {toegang && <li className="navbar-item"><a href="/aanwezigheid" className="navbar-link">Aanwezigheid</a></li>}
                     {!token && <li className="navbar-item"><a href="/inloggen" onClick={inloggen} className="navbar-link">Inloggen</a></li>}
                     {token && <li className="navbar-item"><a onClick={uitloggen} className="navbar-link">uitloggen</a></li>}
                 </ul>
@@ -53,19 +56,4 @@ export default function Navbar() {
 
 }
 
-function CheckToegang() {
-    try {
-        let token = localStorage.getItem("token");
-        const decoded = jwt_decode(token);
-        const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        if (userRole != "Medewerker") {
-            return false;
-        }
-        return true;
-    } catch {
-        return false
-    }
-
-
-}
 

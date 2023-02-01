@@ -4,6 +4,7 @@ using Backend.Data;
 using Backend.Models;
 using Backend.ModelsObj;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers;
 
@@ -22,7 +23,6 @@ public class VoorstellingController : ControllerBase
     [HttpGet("GetVoorstellingen")]
     public async Task<List<Tijdslot>> GetVoorstellingen(string? sort, string? titel, int? page, int? page_size, int? year, int? month, int? day)
     {
-        //datum, prijs
         page = page ?? 1;
         page_size = page_size ?? 5;
         IQueryable<Tijdslot> query = _context.Tijdsloten;
@@ -36,23 +36,23 @@ public class VoorstellingController : ControllerBase
         }
 
         switch (sort)
-            {
-                case "titelop":
-                    query = query.OrderBy(t => t.voorstelling.Titel);
-                    break;
-                case "titelaf":
-                    query = query.OrderByDescending(t => t.voorstelling.Titel);
-                    break;
-                case "prijsop":
-                    query = query.OrderBy(t => t.voorstelling.Prijs);
-                    break;
-                case "prijsaf":
-                   query = query.OrderByDescending(t => t.voorstelling.Prijs);
-                    break;
-                default:
-                    query = query.OrderBy(t => t.voorstelling.Titel);
-                    break;
-            }
+        {
+            case "titelop":
+                query = query.OrderBy(t => t.voorstelling.Titel);
+                break;
+            case "titelaf":
+                query = query.OrderByDescending(t => t.voorstelling.Titel);
+                break;
+            case "prijsop":
+                query = query.OrderBy(t => t.voorstelling.Prijs);
+                break;
+            case "prijsaf":
+                query = query.OrderByDescending(t => t.voorstelling.Prijs);
+                break;
+            default:
+                query = query.OrderBy(t => t.voorstelling.Titel);
+                break;
+        }
 
         if (!string.IsNullOrEmpty(titel))
         {
@@ -65,7 +65,7 @@ public class VoorstellingController : ControllerBase
             query = query.Where(t => t.Datum == datum);
         }
 
-        List<Tijdslot> tijdsloten = await query.Skip((int)((page - 1) * page_size)).Take((int)page_size).Include(t => t.voorstelling).ToListAsync();
+        List<Tijdslot> tijdsloten = await query.Skip((int)((page - 1) * page_size)).Take((int)page_size).Where(t => t.voorstelling != null).Include(t => t.voorstelling).ToListAsync();
         return tijdsloten;
     }
 
@@ -84,5 +84,42 @@ public class VoorstellingController : ControllerBase
         }
 
         return tijdslot;
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<ActionResult<Response>> PostVoorstelling([FromBody] Voorstelling voorstelling)
+    {
+        _context.Voorstellingen.Add(voorstelling);
+        await _context.SaveChangesAsync();
+
+        return new Response { code = 201, message = "Voorstelling is toegevoegd" };
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    [Route("tijdslot")]
+    public async Task<ActionResult<Response>> PostTijdslot([FromBody] TijdslotObj tijdslotObj)
+    {
+        Voorstelling voorstelling = await _context.Voorstellingen.FindAsync(tijdslotObj.VoorstellingID);
+        Zaal zaal = await _context.Zalen.FindAsync(tijdslotObj.ZaalNummer);
+        DateOnly datum = new DateOnly(tijdslotObj.Jaar, tijdslotObj.Maand, tijdslotObj.Dag);
+        TimeOnly beginTijd = new TimeOnly(tijdslotObj.BeginUur, tijdslotObj.BeginMinuut);
+        TimeOnly eindTijd = new TimeOnly(tijdslotObj.EindUur, tijdslotObj.EindMinuut);
+        Tijdslot tijdslot = new Tijdslot { Datum = datum, BeginTijd = beginTijd, EindTijd = eindTijd, Zaal = zaal, voorstelling = voorstelling };
+
+        if (!tijdslot.Vrij(_context))
+        {
+            return new Response() { code = 400, message = "Het tijdslot is niet vrij" };
+        }
+        if (!tijdslot.BinnenOpeningstijden())
+        {
+            return new Response() { code = 400, message = "Dit tijdslot valt buiten de openingstijden" };
+        }
+
+        _context.Tijdsloten.Add(tijdslot);
+        await _context.SaveChangesAsync();
+
+        return new Response { code = 201, message = "Tijdslot is toegevoegd" };
     }
 }

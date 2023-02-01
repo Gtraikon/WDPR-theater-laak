@@ -1,40 +1,17 @@
 import React from "react";
-import jwt_decode from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-function CheckToegang() {
-    try {
-        let token = localStorage.getItem("token");
-        const decoded = jwt_decode(token);
-        const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-    
-        if (userRole != "Admin") {
-            return false;
-        }
-        return true;
-    } catch {
-        return false
-    }
-}
+import { Link } from 'react-router-dom';
+import GeenToegang from "../Components/GeenToegang";
+import getToegang from "../Components/GetToegang";
 
 function AdminPage() {
-    const navigate = useNavigate();
-    if (!CheckToegang()) {
-        return (
-            <div className="betalenGelukt">
-                <h2>U Heeft geen toegang tot deze pagina</h2>
-                <button onClick={home}>Terug naar de homepage</button>
-            </div>
-        )
-    }
-    function home() {
-        navigate("/");
-    }
+    
+    if (!getToegang()) { return <GeenToegang/>}
     return(
-        <>
-        <h1>dit is adminpage</h1>
-        </>
+        <div className="betalenGelukt">
+            <h2>Adminportaal</h2>
+            <Link to="/AddVoorstelling"><button>Voorstelling toevoegen</button></Link>
+            <Link to="/AddTijdsloten"><button>Tijdslot toevoegen</button></Link>
+        </div>
     )
 }
 export default AdminPage;
