@@ -20,7 +20,7 @@ function ZaalReserverenPage() {
             })
             .catch(error => {
                 console.log(error);
-            });
+            }, );
     },);
     return (
         <body>
