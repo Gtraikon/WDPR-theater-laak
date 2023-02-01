@@ -31,3 +31,7 @@ it("Testen foutmelding bij verkeerde inloggegevens", () => {
   cy.get("form").submit();
   cy.get(".error").should("have.text", "U heeft een verkeerde gebruikersnaam of wachtwoord ingevoerd");
 });
+
+it("succesvol inloggen", () => {
+  
+})
