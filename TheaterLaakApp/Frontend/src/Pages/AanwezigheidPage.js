@@ -2,25 +2,14 @@ import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GeenToegang from '../Components/GeenToegang';
+import getToegang from '../Components/GetToegang';
 
 
 function AanwezigheidPage() {
     const navigate = useNavigate();
     const [bestelnummer, setBestelnummer] = useState('');
     const [message, setMessage] = useState('');
-
-    if (!CheckToegang()) {
-        return (
-            <div className="betalenGelukt">
-                <h2>U Heeft geen toegang tot deze pagina</h2>
-                <button onClick={home}>Terug naar de homepage</button>
-            </div>
-        )
-    }
-
-    function home() {
-        navigate("/");
-    }
 
     async function handleSubmit(event){
         event.preventDefault();
@@ -29,6 +18,7 @@ function AanwezigheidPage() {
         console.log(message);
     }
 
+    if (!getToegang()) { return <GeenToegang/>}
     return (
         <form onSubmit={handleSubmit}>
             <h1>Aanwezigheid bezoeker veranderen</h1>
@@ -43,22 +33,6 @@ function AanwezigheidPage() {
             {message && <p>{message}</p>}
         </form>
     )
-
-}
-
-function CheckToegang() {
-    try {
-        let token = localStorage.getItem("token");
-        const decoded = jwt_decode(token);
-        const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        if (userRole != "Medewerker") {
-            return false;
-        }
-        return true;
-    } catch {
-        return false
-    }
-
 
 }
 

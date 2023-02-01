@@ -2,6 +2,7 @@ import React from 'react';;
 
 function HomePage() {
 
+  console.log(localStorage.getItem("toegang"))
   return (
 
     <div className='HomePage'>

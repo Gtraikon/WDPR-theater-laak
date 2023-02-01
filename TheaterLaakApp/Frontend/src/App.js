@@ -22,8 +22,10 @@ import AdminPage from './Pages/AdminPage';
 import ZaalToevoegenPage from './Pages/ZaalToevoegenPage';
 import TijdslotenToevoegenPage from './Pages/TijdslotenToevoegenPage';
 import VoorstellingenToevoegenPage from './Pages/VoorstellingToevoegenPage';
+import TijdslotToevoegenPage from './Pages/TijdslotToevoegenPage';
 
 import Footer from './Components/Footer';
+
 
 
 function Zaal({ match }){
@@ -66,7 +68,7 @@ function App() {
           <Route exact path="/admin" element={<AdminPage/>} ></Route>
           <Route exact path="*" element={<NietGevondenPage />} ></Route>
           <Route exact path="/AddZaal" element={<ZaalToevoegenPage />} ></Route>
-          <Route exact path="/AddTijdsloten" element={<TijdslotenToevoegenPage />} ></Route>
+          <Route exact path="/AddTijdsloten" element={<TijdslotToevoegenPage />} ></Route>
           <Route exact path="/AddVoorstelling" element={<VoorstellingenToevoegenPage />} ></Route>
         </Routes>
       </div>

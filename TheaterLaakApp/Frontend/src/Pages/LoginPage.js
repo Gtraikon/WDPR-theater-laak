@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import jwt_decode from 'jwt-decode';
+import getToegang from "../Components/GetToegang";
 
 function LoginPage() {
   const navigate = useNavigate();

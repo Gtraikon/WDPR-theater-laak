@@ -21,6 +21,7 @@ function Calendar() {
             day = selectedDate.getDate();
         }
 
+        console.log(`${process.env.REACT_APP_API_URL}/api/Voorstelling/GetVoorstellingen?page=${pagina}&&year=${year}&&month=${month}&&day=${day}&&sort=${selectedOption}${titel && `&&titel=${titel}`}`)
         axios.get(`${process.env.REACT_APP_API_URL}/api/Voorstelling/GetVoorstellingen?page=${pagina}&&year=${year}&&month=${month}&&day=${day}&&sort=${selectedOption}${titel && `&&titel=${titel}`}`)
             .then(response => {
                 setVoorstellingShows(response.data);
